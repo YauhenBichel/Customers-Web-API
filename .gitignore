@@ -5,3 +5,7 @@
 
 # Log files
 *.log
+
+.vs/
+obj/
+bin/
