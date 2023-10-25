@@ -7,3 +7,5 @@
 *.log
 
 .vs/
+obj/
+bin/
