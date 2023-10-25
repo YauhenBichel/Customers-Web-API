@@ -4,6 +4,7 @@ using CusomerManagement.Controllers;
 using CusomerManagement.Models;
 using CusomerManagement.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CusomerManagement.Repositories
 {
@@ -51,7 +52,13 @@ namespace CusomerManagement.Repositories
 
         public void delete(int customerId)
         {
-            throw new NotImplementedException();
+            var customerForRemoving = this.getById(customerId);
+
+            if (customerForRemoving != null)
+            {
+                dbContext.Customers.Remove(customerForRemoving);
+                dbContext.SaveChanges();
+            }
         }
     }
 }

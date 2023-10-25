@@ -39,7 +39,7 @@ namespace CusomerManagement.Services
 
         public void delete(int id)
         {
-            throw new NotImplementedException();
+            customerRepository.delete(id);
         }
     }
 }

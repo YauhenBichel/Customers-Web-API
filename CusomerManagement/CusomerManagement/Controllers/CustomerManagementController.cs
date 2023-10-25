@@ -40,7 +40,6 @@ public class CustomerManagementController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
     public ActionResult<CustomerResponseDTO> GetById(int id)
     {
         Customer dbCustomer = customerService.getById(id);
@@ -67,12 +66,10 @@ public class CustomerManagementController : ControllerBase
         return CreatedAtAction(nameof(GetById), new { id = customerResponse.Id }, customerResponse);
     }
 
-    [HttpDelete]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public ActionResult Delete(int customerId)
+    [HttpDelete("{id}")]
+    public ActionResult Delete(int id)
     {
-        customerService.delete(customerId);
+        customerService.delete(id);
         return Ok();
     }
 }
