@@ -5,6 +5,7 @@ using CusomerManagement.DTOs;
 using CusomerManagement.Mappers;
 using CusomerManagement.Models;
 using CusomerManagement.Services;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CusomerManagement.Controllers;
@@ -64,6 +65,30 @@ public class CustomerManagementController : ControllerBase
         CustomerResponseDTO customerResponse = mapper.Map<CustomerResponseDTO>(customer);
 
         return CreatedAtAction(nameof(GetById), new { id = customerResponse.Id }, customerResponse);
+    }
+
+    [HttpPatch("{id}")]
+    public ActionResult<CustomerResponseDTO> JsonPatchWithModelState([FromBody] JsonPatchDocument<CustomerInActivePatch> patchDoc, int id)
+    {
+        if (patchDoc != null)
+        {
+            Customer customer = this.customerService.getById(id);
+
+            patchDoc.ApplyTo(customer);
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            CustomerResponseDTO customerResponse = mapper.Map<CustomerResponseDTO>(customer);
+
+            return Ok(customerResponse);
+        }
+        else
+        {
+            return BadRequest(ModelState);
+        }
     }
 
     [HttpDelete("{id}")]

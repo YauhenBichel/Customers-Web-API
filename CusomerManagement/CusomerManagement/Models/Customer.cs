@@ -22,7 +22,7 @@ namespace CusomerManagement.Models
         [Required]
         [StringLength(Constants.CUSTOMER_MOBILE_NUMBER_MAX_LENGTH, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 0)]
         public string MobileNo { get; set; }
-        public Boolean IsActive { get; set; }
+        public Boolean InActive { get; set; }
 		public List<Address> Addresses { get; set; }
 	}
 }

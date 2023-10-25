@@ -8,7 +8,7 @@ namespace CusomerManagement.Validators
 
         }
 
-		public const int CUSTOMER_TITLE_MAX_LENGTH = 20;
+        public const int CUSTOMER_TITLE_MAX_LENGTH = 20;
         public const int CUSTOMER_FORENAME_MAX_LENGTH = 50;
         public const int CUSTOMER_SURNAME_MAX_LENGTH = 50;
         public const int CUSTOMER_EMAIL_ADDRESS_MAX_LENGTH = 75;

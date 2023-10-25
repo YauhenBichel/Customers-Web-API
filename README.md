@@ -35,4 +35,4 @@ A Web API to support the management of Customers.
 - GET all customers
 - GET all active customers
 - DELETE a customer and all associated addresses
-- PUT a customer as in-active
+- PATCH a customer as in-active

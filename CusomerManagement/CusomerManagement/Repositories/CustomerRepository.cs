@@ -38,7 +38,7 @@ namespace CusomerManagement.Repositories
             if (activeOnly)
             {
                 return dbContext.Customers
-                    .Where(customer => customer.IsActive == activeOnly)
+                    .Where(customer => customer.InActive == activeOnly)
                     .OrderBy(customer => customer.Id)
                     .ToList();
             }
