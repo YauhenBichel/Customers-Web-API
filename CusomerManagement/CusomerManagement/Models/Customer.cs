@@ -2,8 +2,8 @@
 
 namespace CusomerManagement.Models
 {
-	public class Customer
-	{
+	public class Customer : AuditEntity
+    {
 		public int Id { get; set; }
 		public string Title { get; set; }
 		public string Forename { get; set; }

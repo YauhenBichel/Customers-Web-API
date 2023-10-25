@@ -2,7 +2,7 @@
 
 namespace CusomerManagement.Models
 {
-	public class Address
+	public class Address : AuditEntity
 	{
 		public int Id { get; set; }
 		public string AddressLine1 { get; set; }
