@@ -31,3 +31,6 @@
 /Users/yauhenbichel/DevBox/Customers-Web-API/CusomerManagement/CusomerManagement/obj/Debug/net7.0/CusomerManagement.pdb
 /Users/yauhenbichel/DevBox/Customers-Web-API/CusomerManagement/CusomerManagement/obj/Debug/net7.0/CusomerManagement.genruntimeconfig.cache
 /Users/yauhenbichel/DevBox/Customers-Web-API/CusomerManagement/CusomerManagement/obj/Debug/net7.0/ref/CusomerManagement.dll
+/Users/yauhenbichel/DevBox/Customers-Web-API/CusomerManagement/CusomerManagement/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.dll
+/Users/yauhenbichel/DevBox/Customers-Web-API/CusomerManagement/CusomerManagement/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/Users/yauhenbichel/DevBox/Customers-Web-API/CusomerManagement/CusomerManagement/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.InMemory.dll

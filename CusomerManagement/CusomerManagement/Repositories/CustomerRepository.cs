@@ -5,47 +5,47 @@ using CusomerManagement.Models;
 using CusomerManagement.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CusomerManagement
+namespace CusomerManagement.Repositories
 {
 	public class CustomerRepository : ICustomerRepository
 	{
         private readonly ILogger<CustomerRepository> logger;
-        private readonly DbContext dbContext;
+        private readonly CustomerContext dbContext;
 
-        public CustomerRepository(ILogger<CustomerRepository> logger, DbContext dbContext)
+        public CustomerRepository(ILogger<CustomerRepository> logger, CustomerContext dbContext)
         {
             this.logger = logger;
             this.dbContext = dbContext;
         }
 
-        public List<Customer> GetCustomers()
-		{
-            using (dbContext)
-            {
-                return dbContext.Customers
-                    .Where(b => b.Rating > 3)
-                    .OrderBy(b => b.Url)
-                    .ToList();
-            }
+        public Customer create(Customer customer)
+        {
+            dbContext.Customers.Add(customer);
+            dbContext.SaveChanges();
+            return customer;
         }
 
-        public List<Customer> GetActiveCustomers()
+        public Customer getById(int customerId)
         {
-            using (dbContext)
-            {
-                return dbContext.Customers
-                    .Where(b => b.IsActive == true)
-                    .OrderBy(b => b.Id)
-                    .ToList();
-            }
+            return dbContext.Customers
+                .Where(customer => customer.Id == customerId)
+                .FirstOrDefault();
         }
 
-        public async Task<ActionResult<Customer>> addCustomer(Customer customer)
+        public IEnumerable<Customer> GetAll(bool activeOnly)
         {
-            using (dbContext)
+            if (activeOnly)
             {
-                dbContext.Customers.Add(customer);
-                return await dbContext.SaveChangesAsync();
+                return dbContext.Customers
+                    .Where(customer => customer.IsActive == activeOnly)
+                    .OrderBy(customer => customer.Id)
+                    .ToList();
+            }
+            else
+            {
+                return dbContext.Customers
+                    .OrderBy(customer => customer.Id)
+                    .ToList();
             }
         }
     }

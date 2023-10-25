@@ -1,5 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using CusomerManagement.Models;
+using CusomerManagement;
+using CusomerManagement.Repositories;
+using CusomerManagement.Services;
+using CusomerManagement.Validators;
 
 internal class Program
 {
@@ -9,6 +13,9 @@ internal class Program
 
         // Add services to the container.
         builder.Services.AddControllers();
+        builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+        builder.Services.AddScoped<ICustomerService, CustomerService>();
+        builder.Services.AddScoped<ICustomerValidator, CustomerValidator>();
         builder.Services.AddDbContext<CustomerContext>(opt => opt.UseInMemoryDatabase("CustomerManagement"));
 
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

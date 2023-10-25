@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Net.Mime;
 using CusomerManagement.Models;
 using CusomerManagement.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +8,7 @@ namespace CusomerManagement.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Produces(MediaTypeNames.Application.Json)]
 public class CustomerManagementController : ControllerBase
 {
     private readonly ILogger<CustomerManagementController> logger;
@@ -19,15 +21,35 @@ public class CustomerManagementController : ControllerBase
     }
 
     [HttpGet(Name = "GetAllCustomers")]
-    public IEnumerable<Customer> Get()
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public ActionResult<IEnumerable<Customer>> GetAll(bool activeOnly)
     {
-        return new List<Customer>();
+        IEnumerable<Customer> customers = customerService.getAll(activeOnly);
+
+        return Ok(customers);
     }
 
-    //[HttpPost]
-    //public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
-    //{
-        
-    //}
+    [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public ActionResult<Customer> GetById(int id)
+    {
+        Customer dbCustomer = customerService.getById(id);
+        if(dbCustomer == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(dbCustomer);
+    }
+
+    [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public ActionResult<Customer> Create(Customer customer)
+    {
+        Customer dbCustomer = customerService.create(customer);
+
+        return CreatedAtAction(nameof(GetById), new { id = dbCustomer.Id }, customer);
+    }
 }
 
