@@ -36,6 +36,11 @@ namespace CusomerManagement.Services
         {
             return customerRepository.GetAll(activeOnly);
         }
+
+        public void delete(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

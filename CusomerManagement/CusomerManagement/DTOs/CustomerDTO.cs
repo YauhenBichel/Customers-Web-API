@@ -1,12 +1,12 @@
 ﻿using System;
+using CusomerManagement.Models;
 using System.ComponentModel.DataAnnotations;
 using CusomerManagement.Validators;
 
-namespace CusomerManagement.Models
+namespace CusomerManagement.DTOs
 {
-	public class Customer : AuditEntity
-    {
-        public int Id { get; set; }
+	public abstract class CustomerDTO
+	{
         [Required]
         [StringLength(Constants.CUSTOMER_TITLE_MAX_LENGTH, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 0)]
         public string Title { get; set; }
@@ -22,8 +22,6 @@ namespace CusomerManagement.Models
         [Required]
         [StringLength(Constants.CUSTOMER_MOBILE_NUMBER_MAX_LENGTH, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 0)]
         public string MobileNo { get; set; }
-        public Boolean IsActive { get; set; }
-		public List<Address> Addresses { get; set; }
-	}
+    }
 }
 

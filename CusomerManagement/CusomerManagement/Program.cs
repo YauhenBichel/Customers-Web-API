@@ -4,6 +4,7 @@ using CusomerManagement;
 using CusomerManagement.Repositories;
 using CusomerManagement.Services;
 using CusomerManagement.Validators;
+using CusomerManagement.Mappers;
 
 internal class Program
 {
@@ -17,6 +18,7 @@ internal class Program
         builder.Services.AddScoped<ICustomerService, CustomerService>();
         builder.Services.AddScoped<ICustomerValidator, CustomerValidator>();
         builder.Services.AddDbContext<CustomerContext>(opt => opt.UseInMemoryDatabase("CustomerManagement"));
+        builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();

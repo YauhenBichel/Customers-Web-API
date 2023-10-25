@@ -48,6 +48,11 @@ namespace CusomerManagement.Repositories
                     .ToList();
             }
         }
+
+        public void delete(int customerId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

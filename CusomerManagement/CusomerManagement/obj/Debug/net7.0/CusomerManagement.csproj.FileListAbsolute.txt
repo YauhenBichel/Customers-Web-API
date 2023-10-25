@@ -34,3 +34,5 @@
 /Users/yauhenbichel/DevBox/Customers-Web-API/CusomerManagement/CusomerManagement/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.dll
 /Users/yauhenbichel/DevBox/Customers-Web-API/CusomerManagement/CusomerManagement/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Abstractions.dll
 /Users/yauhenbichel/DevBox/Customers-Web-API/CusomerManagement/CusomerManagement/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.InMemory.dll
+/Users/yauhenbichel/DevBox/Customers-Web-API/CusomerManagement/CusomerManagement/bin/Debug/net7.0/AutoMapper.dll
+/Users/yauhenbichel/DevBox/Customers-Web-API/CusomerManagement/CusomerManagement/bin/Debug/net7.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll

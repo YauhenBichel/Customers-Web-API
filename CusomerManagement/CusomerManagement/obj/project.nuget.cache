@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "1xhuEzqiGRujAMtKfwqfQLf0q0IwkTw77OrUCzgYQAYPYhn9aati7klUoBiQkU/RcDSh562SQWrFzwh4WIbsDA==",
+  "dgSpecHash": "iI4++B1FUOQINSZxOhA5Oh9tnqwBSwSpHK07NGMHgGQQn5UneM7j9gg90+Vg74Y5LgLzXfEGOYs5aMi24/xzpA==",
   "success": true,
   "projectFilePath": "/Users/yauhenbichel/DevBox/Customers-Web-API/CusomerManagement/CusomerManagement/CusomerManagement.csproj",
   "expectedPackageFiles": [
+    "/Users/yauhenbichel/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
+    "/Users/yauhenbichel/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "/Users/yauhenbichel/.nuget/packages/microsoft.aspnetcore.openapi/7.0.13/microsoft.aspnetcore.openapi.7.0.13.nupkg.sha512",
+    "/Users/yauhenbichel/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/yauhenbichel/.nuget/packages/microsoft.entityframeworkcore/7.0.13/microsoft.entityframeworkcore.7.0.13.nupkg.sha512",
     "/Users/yauhenbichel/.nuget/packages/microsoft.entityframeworkcore.abstractions/7.0.13/microsoft.entityframeworkcore.abstractions.7.0.13.nupkg.sha512",
     "/Users/yauhenbichel/.nuget/packages/microsoft.entityframeworkcore.analyzers/7.0.13/microsoft.entityframeworkcore.analyzers.7.0.13.nupkg.sha512",

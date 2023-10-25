@@ -8,6 +8,7 @@ namespace CusomerManagement.Repositories
         Customer create(Customer customer);
 		Customer getById(int customerId);
 		IEnumerable<Customer> GetAll(bool activeOnly);
+		void delete(int customerId);
 	}
 }
 
