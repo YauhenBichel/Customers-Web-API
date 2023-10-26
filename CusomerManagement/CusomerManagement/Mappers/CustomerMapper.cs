@@ -9,11 +9,12 @@ namespace CusomerManagement.Mappers
 	{
 		public CustomerMapper()
 		{
-			CreateMap<Customer, CustomerResponseDTO>()
+            CreateMap<Customer, CustomerResponseDTO>()
                 .ForMember(dest => dest.Addresses, opt => opt.MapFrom(src => src.Addresses));
 
             CreateMap<CustomerRequestDTO, Customer>()
 				.ForMember(dest => dest.Addresses, opt => opt.MapFrom(src => src.Addresses));
+			
         }
-	}
+    }
 }

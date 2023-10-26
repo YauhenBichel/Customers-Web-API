@@ -12,5 +12,5 @@ namespace CusomerManagement.Mappers
 			CreateMap<Address, AddressResponseDTO>();
 			CreateMap<AddressRequestDTO, Address>();
 		}
-	}
+    }
 }

@@ -29,6 +29,7 @@ namespace CusomerManagement.Repositories
         public Customer getById(int customerId)
         {
             return dbContext.Customers
+                .Include(c => c.Addresses)
                 .Where(customer => customer.Id == customerId)
                 .FirstOrDefault();
         }
@@ -39,6 +40,7 @@ namespace CusomerManagement.Repositories
             {
                 return dbContext.Customers
                     .Where(customer => customer.InActive == activeOnly)
+                    .Include(c => c.Addresses)
                     .OrderBy(customer => customer.Id)
                     .ToList();
             }

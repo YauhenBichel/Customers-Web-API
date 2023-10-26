@@ -28,7 +28,7 @@ public class CustomerManagementController : ControllerBase
         this.mapper = mapper;
     }
 
-    [HttpGet(Name = "GetAllCustomers")]
+    [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public ActionResult<IEnumerable<CustomerResponseDTO>> GetAll(bool activeOnly)
     {
@@ -55,8 +55,6 @@ public class CustomerManagementController : ControllerBase
     }
 
     [HttpPost]
-    [ProducesResponseType(StatusCodes.Status201Created)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public ActionResult<CustomerResponseDTO> Create(CustomerRequestDTO customerRequest)
     {
         Customer customer = mapper.Map<Customer>(customerRequest);
@@ -68,7 +66,7 @@ public class CustomerManagementController : ControllerBase
     }
 
     [HttpPatch("{id}")]
-    public ActionResult<CustomerResponseDTO> JsonPatchWithModelState([FromBody] JsonPatchDocument<CustomerInActivePatch> patchDoc, int id)
+    public ActionResult<CustomerResponseDTO> JsonPatchWithModelState([FromBody] JsonPatchDocument<Customer> patchDoc, int id)
     {
         if (patchDoc != null)
         {
