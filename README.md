@@ -5,7 +5,8 @@ Simple Web API for customers management using .NET Core
 A Web API to support the management of Customers.
 
 ## How to run
-the default port is 5033
+    Note: the default port is 5033
+
     >cd CustomersManagement/CustomerManagement
     >dotnet run
     >import postman collection "Customers Management.postman_collection.json"
