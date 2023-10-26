@@ -44,3 +44,6 @@ A Web API to support the management of Customers.
            "value": true
         } 
     ]
+
+### Database is in-memory
+    - send a few post requests for adding records into tables

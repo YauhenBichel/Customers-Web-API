@@ -22,7 +22,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"inActive\": true\n}",
+					"raw": "[     \n    {       \n       \"op\": \"replace\",       \n       \"path\": \"/InActive\",       \n       \"value\": true\n    } \n]",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -58,7 +58,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"title\": \"test2\",\n  \"forename\": \"test21\",\n  \"surname\": \"test31\",\n  \"emailAdress\": \"test41\",\n  \"mobileNo\": \"23232123123\",\n  \"inActive\": false,\n  \"addresses\": [\n    {\n      \"addressLine1\": \"test5\",\n      \"addressLine2\": \"test6\",\n      \"town\": \"test7\",\n      \"country\": \"test8\",\n      \"postcode\": \"erwew\"\n    }\n  ]\n}",
+					"raw": "{\n  \"title\": \"{{randomStringMax20}}\",\n  \"forename\": \"{{randomStringMax50}}\",\n  \"surname\": \"{{randomStringMax50}}\",\n  \"emailAdress\": \"{{randomStringMax75}}\",\n  \"mobileNo\": \"{{randomStringMax15}}\",\n  \"inActive\": false,\n  \"addresses\": [\n    {\n      \"addressLine1\": \"{{randomStringMax80}}\",\n      \"addressLine2\": \"{{randomStringMax80}}\",\n      \"town\": \"{{randomStringMax50}}\",\n      \"country\": \"{{randomStringMax50}}\",\n      \"postcode\": \"{{randomStringMax10}}\"\n    }\n  ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -68,6 +68,50 @@
 				"url": "http://localhost:5091/api/CustomerManagement"
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"function randomString(minValue, maxValue, dataSet = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ') {",
+					"    if (!minValue) {",
+					"        minValue = 20;",
+					"        maxValue = 20;",
+					"    }",
+					"",
+					"    if (!maxValue) {",
+					"        maxValue = minValue;",
+					"    }",
+					"",
+					"    let length = _.random(minValue, maxValue),",
+					"        randomString = \"\";",
+					"",
+					"    for (let i = 0; i < length; i++)",
+					"        randomString += dataSet.charAt(Math.floor(Math.random() * dataSet.length));",
+					"    return randomString;",
+					"}",
+					"",
+					"pm.variables.set('randomStringMax10', randomString(10,10));",
+					"pm.variables.set('randomStringMax15', randomString(15,15));",
+					"pm.variables.set('randomStringMax20', randomString(20,20));",
+					"pm.variables.set('randomStringMax50', randomString(50,50));",
+					"pm.variables.set('randomStringMax75', randomString(75,75));",
+					"pm.variables.set('randomStringMax80', randomString(80,80));",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
