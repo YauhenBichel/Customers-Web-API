@@ -6,14 +6,14 @@ A Web API to support the management of Customers.
 
 ## How to run
 the default port is 5033
-    - >cd CustomersManagement/CustomerManagement
-    - >dotnet run
-    - >import postman collection "Customers Management.postman_collection.json"
+    >cd CustomersManagement/CustomerManagement
+    >dotnet run
+    >import postman collection "Customers Management.postman_collection.json"
 
 ### With dockerfile
-    - >cd CustomersManagement/CustomerManagement
-    - >docker build . -t ybichel/customerapi
-    - >docker run ybichel/customerapi
+    >cd CustomersManagement/CustomerManagement
+    >docker build . -t ybichel/customerapi
+    >docker run ybichel/customerapi
 
 
 ### Entities
