@@ -10,6 +10,9 @@ A Web API to support the management of Customers.
     >cd CustomersManagement/CustomerManagement
     >dotnet run
     >import postman collection "Customers Management.postman_collection.json"
+#### If port is used
+    >sudo lsof -i -P | grep LISTEN | grep :5033
+    >sudo kill -9 <PID>
 
 ### With dockerfile
     >cd CustomersManagement/CustomerManagement

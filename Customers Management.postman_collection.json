@@ -29,7 +29,7 @@
 						}
 					}
 				},
-				"url": "http://localhost:5091/api/CustomerManagement/1"
+				"url": "http://localhost:5033/api/CustomerManagement/1"
 			},
 			"response": []
 		},
@@ -38,7 +38,7 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"url": "http://localhost:5091/api/CustomerManagement/1"
+				"url": "http://localhost:5033/api/CustomerManagement/1"
 			},
 			"response": []
 		},
@@ -47,7 +47,33 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://localhost:5091/api/CustomerManagement"
+				"url": "http://localhost:5033/api/CustomerManagement"
+			},
+			"response": []
+		},
+		{
+			"name": "get all in-active customers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5033/api/CustomerManagement?activeOnly=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5033",
+					"path": [
+						"api",
+						"CustomerManagement"
+					],
+					"query": [
+						{
+							"key": "activeOnly",
+							"value": "true"
+						}
+					]
+				}
 			},
 			"response": []
 		},
@@ -65,7 +91,25 @@
 						}
 					}
 				},
-				"url": "http://localhost:5091/api/CustomerManagement"
+				"url": "http://localhost:5033/api/CustomerManagement"
+			},
+			"response": []
+		},
+		{
+			"name": "try to create customer without address",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"{{randomStringMax20}}\",\n  \"forename\": \"{{randomStringMax50}}\",\n  \"surname\": \"{{randomStringMax50}}\",\n  \"emailAdress\": \"{{randomStringMax75}}\",\n  \"mobileNo\": \"{{randomStringMax15}}\",\n  \"inActive\": false,\n  \"addresses\": [\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5033/api/CustomerManagement"
 			},
 			"response": []
 		}

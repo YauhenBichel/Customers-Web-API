@@ -10,16 +10,13 @@ namespace CusomerManagement.Services
 	{
         private readonly ILogger<CustomerService> logger;
         private readonly ICustomerRepository customerRepository;
-        private readonly ICustomerValidator customerValidator;
 
 
         public CustomerService(ILogger<CustomerService> logger,
-            ICustomerRepository customerRepository,
-            ICustomerValidator customerValidator)
+            ICustomerRepository customerRepository)
 		{
 			this.logger = logger;
 			this.customerRepository = customerRepository;
-            this.customerValidator = customerValidator;
 		}
 
         public Customer create(Customer customer)

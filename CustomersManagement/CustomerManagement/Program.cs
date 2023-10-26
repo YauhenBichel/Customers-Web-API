@@ -16,7 +16,7 @@ internal class Program
         builder.Services.AddControllers().AddNewtonsoftJson();
         builder.Services.AddScoped<ICustomerRepository, CustomerDbContextRepository>();
         builder.Services.AddScoped<ICustomerService, CustomerService>();
-        builder.Services.AddScoped<ICustomerValidator, CustomerValidator>();
+        builder.Services.AddScoped<ICustomerRequestValidator, CustomerRequestValidator>();
         builder.Services.AddDbContext<CustomerContext>(opt => opt.UseInMemoryDatabase("CustomerManagement"));
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

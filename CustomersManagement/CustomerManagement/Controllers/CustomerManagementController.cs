@@ -5,6 +5,7 @@ using CusomerManagement.DTOs;
 using CusomerManagement.Mappers;
 using CusomerManagement.Models;
 using CusomerManagement.Services;
+using CusomerManagement.Validators;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,19 +18,21 @@ public class CustomerManagementController : ControllerBase
 {
     private readonly ILogger<CustomerManagementController> logger;
     private readonly ICustomerService customerService;
+    private readonly ICustomerRequestValidator customerRequestValidator;
     private readonly IMapper mapper;
 
     public CustomerManagementController(ILogger<CustomerManagementController> logger,
         ICustomerService customerService,
+        ICustomerRequestValidator customerRequestValidator,
         IMapper mapper)
     {
         this.logger = logger;
         this.customerService = customerService;
+        this.customerRequestValidator = customerRequestValidator;
         this.mapper = mapper;
     }
 
     [HttpGet]
-    [ProducesResponseType(StatusCodes.Status200OK)]
     public ActionResult<IEnumerable<CustomerResponseDTO>> GetAll(bool activeOnly)
     {
         IEnumerable<Customer> customers = customerService.getAll(activeOnly);
@@ -57,6 +60,11 @@ public class CustomerManagementController : ControllerBase
     [HttpPost]
     public ActionResult<CustomerResponseDTO> Create(CustomerRequestDTO customerRequest)
     {
+        if(!customerRequestValidator.doesAddressExist(customerRequest))
+        {
+            return BadRequest("A customer must have at least one address");
+        }
+
         Customer customer = mapper.Map<Customer>(customerRequest);
         Customer dbCustomer = customerService.create(customer);
 
