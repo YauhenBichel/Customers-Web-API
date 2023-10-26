@@ -61,4 +61,7 @@ A Web API to support the management of Customers.
 ### Database is in-memory
 
 ### Postman collection
-- pre-request script generates random string values 
+- pre-request script generates random string values
+
+## References
+- https://code.visualstudio.com/docs/containers/quickstart-aspnet-core 
