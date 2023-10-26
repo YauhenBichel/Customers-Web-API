@@ -36,3 +36,11 @@ A Web API to support the management of Customers.
 - GET all active customers
 - DELETE a customer and all associated addresses
 - PATCH a customer as in-active
+    request body
+    [     
+        {       
+           "op": "replace",       
+           "path": "/InActive",       
+           "value": true
+        } 
+    ]
