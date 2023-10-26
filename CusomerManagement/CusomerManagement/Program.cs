@@ -14,7 +14,7 @@ internal class Program
 
         // Add services to the container.
         builder.Services.AddControllers().AddNewtonsoftJson();
-        builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+        builder.Services.AddScoped<ICustomerRepository, CustomerDbContextRepository>();
         builder.Services.AddScoped<ICustomerService, CustomerService>();
         builder.Services.AddScoped<ICustomerValidator, CustomerValidator>();
         builder.Services.AddDbContext<CustomerContext>(opt => opt.UseInMemoryDatabase("CustomerManagement"));

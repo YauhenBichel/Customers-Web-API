@@ -65,19 +65,23 @@ public class CustomerManagementController : ControllerBase
         return CreatedAtAction(nameof(GetById), new { id = customerResponse.Id }, customerResponse);
     }
 
-    [HttpPatch("{id}")]
-    public ActionResult<CustomerResponseDTO> JsonPatchWithModelState([FromBody] JsonPatchDocument<Customer> patchDoc, int id)
+    [HttpPatch("{customerId}")]
+    public ActionResult<CustomerResponseDTO> JsonPatchWithModelState(int customerId,
+        [FromBody] JsonPatchDocument<Customer> patch)
     {
-        if (patchDoc != null)
+        if (patch != null)
         {
-            Customer customer = this.customerService.getById(id);
+            Customer customer = this.customerService.getById(customerId);
 
-            patchDoc.ApplyTo(customer);
+            patch.ApplyTo(customer, ModelState);
 
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
+            this.customerService.update(customer);
+
 
             CustomerResponseDTO customerResponse = mapper.Map<CustomerResponseDTO>(customer);
 

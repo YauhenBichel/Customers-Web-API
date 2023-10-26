@@ -8,12 +8,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CusomerManagement.Repositories
 {
-	public class CustomerRepository : ICustomerRepository
+	public class CustomerDbContextRepository : ICustomerRepository
 	{
-        private readonly ILogger<CustomerRepository> logger;
+        private readonly ILogger<CustomerDbContextRepository> logger;
         private readonly CustomerContext dbContext;
 
-        public CustomerRepository(ILogger<CustomerRepository> logger, CustomerContext dbContext)
+        public CustomerDbContextRepository(ILogger<CustomerDbContextRepository> logger, CustomerContext dbContext)
         {
             this.logger = logger;
             this.dbContext = dbContext;
@@ -61,6 +61,13 @@ namespace CusomerManagement.Repositories
                 dbContext.Customers.Remove(customerForRemoving);
                 dbContext.SaveChanges();
             }
+        }
+
+        public Customer update(Customer customer)
+        {
+            dbContext.Customers.Update(customer);
+            dbContext.SaveChanges();
+            return customer;
         }
     }
 }

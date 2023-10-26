@@ -41,6 +41,11 @@ namespace CusomerManagement.Services
         {
             customerRepository.delete(id);
         }
+
+        public Customer update(Customer customer)
+        {
+            return customerRepository.update(customer);
+        }
     }
 }
 
