@@ -4,6 +4,12 @@ Simple Web API for customers management using .NET Core
 ## Description
 A Web API to support the management of Customers.
 
+## How to run
+the default port is 5033
+    >cd CustomersManagement/CustomerManagement
+    >dotnet run
+    >import postman collection "Customers Management.postman_collection.json"
+
 ### Entities
 - Customer
     - title NOT NULL max varchar 20
@@ -42,8 +48,10 @@ A Web API to support the management of Customers.
            "op": "replace",       
            "path": "/InActive",       
            "value": true
-        } 
+        }
     ]
 
 ### Database is in-memory
-    - send a few post requests for adding records into tables
+
+### Postman collection
+- pre-request script generates random string values 
