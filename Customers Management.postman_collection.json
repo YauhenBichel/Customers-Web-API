@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "6bf30c96-53ce-4b9f-9c5e-3553e10b372f",
+		"name": "Customers Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "3051943"
+	},
+	"item": [
+		{
+			"name": "get customer by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5091/api/CustomerManagement/1"
+			},
+			"response": []
+		},
+		{
+			"name": "patch customer: in-active",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"inActive\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5091/api/CustomerManagement/1"
+			},
+			"response": []
+		},
+		{
+			"name": "delete customer by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:5091/api/CustomerManagement/1"
+			},
+			"response": []
+		},
+		{
+			"name": "get all customers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5091/api/CustomerManagement"
+			},
+			"response": []
+		},
+		{
+			"name": "create customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"test2\",\n  \"forename\": \"test21\",\n  \"surname\": \"test31\",\n  \"emailAdress\": \"test41\",\n  \"mobileNo\": \"23232123123\",\n  \"inActive\": false,\n  \"addresses\": [\n    {\n      \"addressLine1\": \"test5\",\n      \"addressLine2\": \"test6\",\n      \"town\": \"test7\",\n      \"country\": \"test8\",\n      \"postcode\": \"erwew\"\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5091/api/CustomerManagement"
+			},
+			"response": []
+		}
+	]
+}
