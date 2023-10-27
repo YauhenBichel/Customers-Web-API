@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CusomerManagement.Models
 {
-    public class CustomerContext : DbContext
+    public class CustomerMngmContext : DbContext
 	{
-		public CustomerContext(DbContextOptions<CustomerContext> options) : base(options)
+		public CustomerMngmContext(DbContextOptions<CustomerMngmContext> options) : base(options)
 		{
 		}
 

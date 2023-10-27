@@ -17,7 +17,7 @@ internal class Program
         builder.Services.AddScoped<ICustomerRepository, CustomerDbContextRepository>();
         builder.Services.AddScoped<ICustomerService, CustomerService>();
         builder.Services.AddScoped<ICustomerRequestValidator, CustomerRequestValidator>();
-        builder.Services.AddDbContext<CustomerContext>(opt => opt.UseInMemoryDatabase("CustomerManagement"));
+        builder.Services.AddDbContext<CustomerMngmContext>(opt => opt.UseInMemoryDatabase("CustomerManagement"));
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

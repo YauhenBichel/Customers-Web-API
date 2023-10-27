@@ -74,6 +74,34 @@ public class CustomerManagementController : ControllerBase
     }
 
     [HttpPatch("{customerId}")]
+    public ActionResult<CustomerResponseDTO> Patch(int customerId,
+        [FromBody] JsonPatchDocument<Customer> patch)
+    {
+        if (patch != null)
+        {
+            Customer customer = this.customerService.getById(customerId);
+
+            patch.ApplyTo(customer, ModelState);
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            this.customerService.update(customer);
+
+
+            CustomerResponseDTO customerResponse = mapper.Map<CustomerResponseDTO>(customer);
+
+            return Ok(customerResponse);
+        }
+        else
+        {
+            return BadRequest(ModelState);
+        }
+    }
+
+    [HttpPatch("{customerId}")]
     public ActionResult<CustomerResponseDTO> JsonPatchWithModelState(int customerId,
         [FromBody] JsonPatchDocument<Customer> patch)
     {
@@ -101,10 +129,10 @@ public class CustomerManagementController : ControllerBase
         }
     }
 
-    [HttpDelete("{id}")]
-    public ActionResult Delete(int id)
+    [HttpDelete("{customerId}")]
+    public ActionResult Delete(int customerId)
     {
-        customerService.delete(id);
+        customerService.delete(customerId);
         return Ok();
     }
 }

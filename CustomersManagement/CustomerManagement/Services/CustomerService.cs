@@ -21,12 +21,12 @@ namespace CusomerManagement.Services
 
         public Customer create(Customer customer)
         {
-            return customerRepository.create(customer);
+            return customerRepository.Create(customer);
         }
 
         public Customer getById(int id)
         {
-            return customerRepository.getById(id);
+            return customerRepository.GetById(id);
         }
 
         public IEnumerable<Customer> getAll(bool activeOnly)
@@ -36,12 +36,12 @@ namespace CusomerManagement.Services
 
         public void delete(int id)
         {
-            customerRepository.delete(id);
+            customerRepository.Delete(id);
         }
 
         public Customer update(Customer customer)
         {
-            return customerRepository.update(customer);
+            return customerRepository.Update(customer);
         }
     }
 }

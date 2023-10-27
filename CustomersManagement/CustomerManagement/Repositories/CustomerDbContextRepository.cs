@@ -11,22 +11,22 @@ namespace CusomerManagement.Repositories
 	public class CustomerDbContextRepository : ICustomerRepository
 	{
         private readonly ILogger<CustomerDbContextRepository> logger;
-        private readonly CustomerContext dbContext;
+        private readonly CustomerMngmContext dbContext;
 
-        public CustomerDbContextRepository(ILogger<CustomerDbContextRepository> logger, CustomerContext dbContext)
+        public CustomerDbContextRepository(ILogger<CustomerDbContextRepository> logger, CustomerMngmContext dbContext)
         {
             this.logger = logger;
             this.dbContext = dbContext;
         }
 
-        public Customer create(Customer customer)
+        public Customer Create(Customer customer)
         {
             dbContext.Customers.Add(customer);
             dbContext.SaveChanges();
             return customer;
         }
 
-        public Customer getById(int customerId)
+        public Customer GetById(int customerId)
         {
             return dbContext.Customers
                 .Include(c => c.Addresses)
@@ -52,9 +52,9 @@ namespace CusomerManagement.Repositories
             }
         }
 
-        public void delete(int customerId)
+        public void Delete(int customerId)
         {
-            var customerForRemoving = this.getById(customerId);
+            var customerForRemoving = this.GetById(customerId);
 
             if (customerForRemoving != null)
             {
@@ -63,7 +63,7 @@ namespace CusomerManagement.Repositories
             }
         }
 
-        public Customer update(Customer customer)
+        public Customer Update(Customer customer)
         {
             dbContext.Customers.Update(customer);
             dbContext.SaveChanges();

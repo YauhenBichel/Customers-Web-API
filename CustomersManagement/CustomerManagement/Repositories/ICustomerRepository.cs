@@ -5,11 +5,11 @@ namespace CusomerManagement.Repositories
 {
 	public interface ICustomerRepository
 	{
-        Customer create(Customer customer);
-		Customer update(Customer customer);
-		Customer getById(int customerId);
+        Customer Create(Customer customer);
+		Customer Update(Customer customer);
+		Customer GetById(int customerId);
 		IEnumerable<Customer> GetAll(bool activeOnly);
-		void delete(int customerId);
+		void Delete(int customerId);
 	}
 }
 
