@@ -7,6 +7,48 @@
 	},
 	"item": [
 		{
+			"name": "Negative cases",
+			"item": [
+				{
+					"name": "try to create customer unique email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"{{randomStringMax20}}\",\n  \"forename\": \"{{randomStringMax50}}\",\n  \"surname\": \"{{randomStringMax50}}\",\n  \"emailAddress\": \"duplicate@gmail.com\",\n  \"mobileNo\": \"{{randomStringMax15}}\",\n  \"inActive\": false,\n  \"addresses\": [\n    {\n      \"addressLine1\": \"{{randomStringMax80}}\",\n      \"addressLine2\": \"{{randomStringMax80}}\",\n      \"town\": \"{{randomStringMax50}}\",\n      \"country\": \"{{randomStringMax50}}\",\n      \"postcode\": \"{{randomStringMax10}}\"\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://{{domain}}:{{port}}/api/Customer"
+					},
+					"response": []
+				},
+				{
+					"name": "try to create customer without address",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"{{randomStringMax20}}\",\n  \"forename\": \"{{randomStringMax50}}\",\n  \"surname\": \"{{randomStringMax50}}\",\n  \"emailAddress\": \"{{randomStringMax75}}\",\n  \"mobileNo\": \"{{randomStringMax15}}\",\n  \"inActive\": false,\n  \"addresses\": [\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://{{domain}}:{{port}}/api/Customer"
+					},
+					"response": []
+				}
+			],
+			"description": "The folder contains a list of requests for testing requests validation functionality"
+		},
+		{
 			"name": "get customer by id",
 			"request": {
 				"method": "GET",
@@ -57,6 +99,24 @@
 					}
 				},
 				"url": "http://{{domain}}:{{port}}/api/Customer/2"
+			},
+			"response": []
+		},
+		{
+			"name": "patch address: isMain",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[     \n    {       \n       \"op\": \"replace\",       \n       \"path\": \"/IsMain\",       \n       \"value\": true\n    } \n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://{{domain}}:{{port}}/api/Customer/1/Address/1"
 			},
 			"response": []
 		},
@@ -130,42 +190,6 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\n  \"title\": \"{{randomStringMax20}}\",\n  \"forename\": \"{{randomStringMax50}}\",\n  \"surname\": \"{{randomStringMax50}}\",\n  \"emailAddress\": \"{{randomStringMax75}}\",\n  \"mobileNo\": \"{{randomStringMax15}}\",\n  \"inActive\": false,\n  \"addresses\": [\n    {\n      \"addressLine1\": \"{{randomStringMax80}}\",\n      \"addressLine2\": \"{{randomStringMax80}}\",\n      \"town\": \"{{randomStringMax50}}\",\n      \"country\": \"{{randomStringMax50}}\",\n      \"postcode\": \"{{randomStringMax10}}\",\n      \"isMain\": true\n    },\n    {\n      \"addressLine1\": \"{{randomStringMax80}}\",\n      \"addressLine2\": \"{{randomStringMax80}}\",\n      \"town\": \"{{randomStringMax50}}\",\n      \"country\": \"{{randomStringMax50}}\",\n      \"postcode\": \"{{randomStringMax10}}\",\n      \"isMain\": false\n    }\n  ]\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "http://{{domain}}:{{port}}/api/Customer"
-			},
-			"response": []
-		},
-		{
-			"name": "try to create customer unique email",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"title\": \"{{randomStringMax20}}\",\n  \"forename\": \"{{randomStringMax50}}\",\n  \"surname\": \"{{randomStringMax50}}\",\n  \"emailAddress\": \"duplicate@gmail.com\",\n  \"mobileNo\": \"{{randomStringMax15}}\",\n  \"inActive\": false,\n  \"addresses\": [\n    {\n      \"addressLine1\": \"{{randomStringMax80}}\",\n      \"addressLine2\": \"{{randomStringMax80}}\",\n      \"town\": \"{{randomStringMax50}}\",\n      \"country\": \"{{randomStringMax50}}\",\n      \"postcode\": \"{{randomStringMax10}}\"\n    }\n  ]\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "http://{{domain}}:{{port}}/api/Customer"
-			},
-			"response": []
-		},
-		{
-			"name": "try to create customer without address",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"title\": \"{{randomStringMax20}}\",\n  \"forename\": \"{{randomStringMax50}}\",\n  \"surname\": \"{{randomStringMax50}}\",\n  \"emailAddress\": \"{{randomStringMax75}}\",\n  \"mobileNo\": \"{{randomStringMax15}}\",\n  \"inActive\": false,\n  \"addresses\": [\n  ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
