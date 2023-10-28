@@ -20,6 +20,7 @@ namespace CustomerManagement.Models
         [Required]
         [StringLength(Constants.ADDRESS_POSTCODE_MAX_LENGTH, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 0)]
         public string Postcode { get; set; }
+        public bool IsMain { get; set; }
 
     }
 }

@@ -18,7 +18,7 @@ internal class Program
         builder.Services.AddScoped<IAddressRepository, AddressDbContextRepository>();
         builder.Services.AddScoped<ICustomerService, CustomerService>();
         builder.Services.AddScoped<IAddressService, AddressService>();
-        builder.Services.AddScoped<ICustomerRequestValidator, CustomerRequestValidator>();
+        builder.Services.AddScoped<IAddressRequestValidator, AddressRequestValidator>();
         builder.Services.AddDbContext<CustomerMngmContext>(opt => opt.UseInMemoryDatabase("CustomerManagement"));
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

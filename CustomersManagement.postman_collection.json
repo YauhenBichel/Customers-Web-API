@@ -129,7 +129,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"title\": \"{{randomStringMax20}}\",\n  \"forename\": \"{{randomStringMax50}}\",\n  \"surname\": \"{{randomStringMax50}}\",\n  \"emailAddress\": \"{{randomStringMax75}}\",\n  \"mobileNo\": \"{{randomStringMax15}}\",\n  \"inActive\": false,\n  \"addresses\": [\n    {\n      \"addressLine1\": \"{{randomStringMax80}}\",\n      \"addressLine2\": \"{{randomStringMax80}}\",\n      \"town\": \"{{randomStringMax50}}\",\n      \"country\": \"{{randomStringMax50}}\",\n      \"postcode\": \"{{randomStringMax10}}\"\n    },\n    {\n      \"addressLine1\": \"{{randomStringMax80}}\",\n      \"addressLine2\": \"{{randomStringMax80}}\",\n      \"town\": \"{{randomStringMax50}}\",\n      \"country\": \"{{randomStringMax50}}\",\n      \"postcode\": \"{{randomStringMax10}}\"\n    }\n  ]\n}",
+					"raw": "{\n  \"title\": \"{{randomStringMax20}}\",\n  \"forename\": \"{{randomStringMax50}}\",\n  \"surname\": \"{{randomStringMax50}}\",\n  \"emailAddress\": \"{{randomStringMax75}}\",\n  \"mobileNo\": \"{{randomStringMax15}}\",\n  \"inActive\": false,\n  \"addresses\": [\n    {\n      \"addressLine1\": \"{{randomStringMax80}}\",\n      \"addressLine2\": \"{{randomStringMax80}}\",\n      \"town\": \"{{randomStringMax50}}\",\n      \"country\": \"{{randomStringMax50}}\",\n      \"postcode\": \"{{randomStringMax10}}\",\n      \"isMain\": true\n    },\n    {\n      \"addressLine1\": \"{{randomStringMax80}}\",\n      \"addressLine2\": \"{{randomStringMax80}}\",\n      \"town\": \"{{randomStringMax50}}\",\n      \"country\": \"{{randomStringMax50}}\",\n      \"postcode\": \"{{randomStringMax10}}\",\n      \"isMain\": false\n    }\n  ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"

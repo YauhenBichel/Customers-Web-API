@@ -72,6 +72,33 @@ public class AddressController : ControllerBase
         return Ok(addressResponse);
     }
 
+    [HttpPatch("{addressId}")]
+    public ActionResult<CustomerResponseDTO> Patch(int customerId, int addressId,
+        [FromBody] JsonPatchDocument<Address> patch)
+    {
+        if (patch != null)
+        {
+            Address address = this.addressService.GetById(customerId, addressId);
+
+            patch.ApplyTo(address, ModelState);
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            this.addressService.Update(customerId, address);
+
+            AddressResponseDTO addressResponse = mapper.Map<AddressResponseDTO>(address);
+
+            return Ok(addressResponse);
+        }
+        else
+        {
+            return BadRequest(ModelState);
+        }
+    }
+
     [HttpDelete("{addressId}")]
     public ActionResult Delete(int customerId, int addressId)
     {

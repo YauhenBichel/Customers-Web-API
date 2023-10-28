@@ -19,30 +19,15 @@ namespace CustomerManagement.Repositories
             this.dbContext = dbContext;
         }
 
-        public Address Create(Address address)
+        public Address Create(int customerId, Address address)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(int customerId, int addressId)
+
+        public Address Update(int customerId, Address address)
         {
-            Customer customerForRemoving = dbContext.Customers
-                .Include(c => c.Addresses)
-                .Where(customer => customer.Id == customerId)
-                .FirstOrDefault();
-
-            if (customerForRemoving != null)
-            {
-                Address addressForRemoving = customerForRemoving.Addresses
-                .Where(address => address.Id == addressId)
-                .FirstOrDefault();
-
-                if (addressForRemoving != null)
-                {
-                    dbContext.Addresses.Remove(addressForRemoving);
-                    dbContext.SaveChanges();
-                }
-            }
+            throw new NotImplementedException();
         }
 
         public IEnumerable<Address> GetAllByCustomerId(int customerId)
@@ -73,9 +58,25 @@ namespace CustomerManagement.Repositories
                 .FirstOrDefault();
         }
 
-        public Address Update(Address address)
+        public void Delete(int customerId, int addressId)
         {
-            throw new NotImplementedException();
+            Customer customerForRemoving = dbContext.Customers
+                .Include(c => c.Addresses)
+                .Where(customer => customer.Id == customerId)
+                .FirstOrDefault();
+
+            if (customerForRemoving != null)
+            {
+                Address addressForRemoving = customerForRemoving.Addresses
+                .Where(address => address.Id == addressId)
+                .FirstOrDefault();
+
+                if (addressForRemoving != null)
+                {
+                    dbContext.Addresses.Remove(addressForRemoving);
+                    dbContext.SaveChanges();
+                }
+            }
         }
     }
 }

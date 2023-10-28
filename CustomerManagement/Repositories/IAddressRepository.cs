@@ -5,8 +5,8 @@ namespace CustomerManagement.Repositories
 {
 	public interface IAddressRepository
 	{
-        Address Create(Address address);
-        Address Update(Address address);
+        Address Create(int customerId, Address address);
+        Address Update(int customerId, Address address);
         Address GetById(int customerId, int addressId);
 		IEnumerable<Address> GetAllByCustomerId(int customerId);
 		void Delete(int customerId, int addressId);

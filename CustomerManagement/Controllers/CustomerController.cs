@@ -18,17 +18,17 @@ public class CustomerController : ControllerBase
 {
     private readonly ILogger<CustomerController> logger;
     private readonly ICustomerService customerService;
-    private readonly ICustomerRequestValidator customerRequestValidator;
+    private readonly IAddressRequestValidator addressRequestValidator;
     private readonly IMapper mapper;
 
     public CustomerController(ILogger<CustomerController> logger,
         ICustomerService customerService,
-        ICustomerRequestValidator customerRequestValidator,
+        IAddressRequestValidator addressRequestValidator,
         IMapper mapper)
     {
         this.logger = logger;
         this.customerService = customerService;
-        this.customerRequestValidator = customerRequestValidator;
+        this.addressRequestValidator = addressRequestValidator;
         this.mapper = mapper;
     }
 
@@ -60,9 +60,9 @@ public class CustomerController : ControllerBase
     [HttpPost]
     public ActionResult<CustomerResponseDTO> Create(CustomerRequestDTO customerRequest)
     {
-        if(!customerRequestValidator.doesAddressExist(customerRequest))
+        if(!addressRequestValidator.doesOnlyOneMainAddressExist(customerRequest.Addresses))
         {
-            return BadRequest("A customer must have at least one address");
+            return BadRequest("A customer must have at least one address and only one main address");
         }
 
         Customer customer = mapper.Map<Customer>(customerRequest);

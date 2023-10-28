@@ -44,7 +44,7 @@ A Web API to support the management of Customers.
 • A customer can be marked as in-active if requested by the customer.
 • A customer can be deleted, and all associated addresses should also be deleted
 • A list of ALL customers can be returned.
-• A list of ACTIVE customers can be returned.
+• A list of INACTIVE customers can be returned.
 
 ### API
 - Create a customer
