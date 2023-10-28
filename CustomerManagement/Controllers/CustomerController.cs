@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CustomerManagement.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/Customer")]
 [Produces(MediaTypeNames.Application.Json)]
 public class CustomerController : ControllerBase
 {
