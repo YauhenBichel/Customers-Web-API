@@ -24,19 +24,37 @@ namespace CustomerManagement.Repositories
             throw new NotImplementedException();
         }
 
-        public void Delete(int addressId)
+        public void Delete(int customerId, int addressId)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Address> GetAll()
+        public IEnumerable<Address> GetAllByCustomerId(int customerId)
         {
-            throw new NotImplementedException();
+            Customer customer = dbContext.Customers
+                .Include(c => c.Addresses)
+                .Where(customer => customer.Id == customerId)
+                .FirstOrDefault();
+
+            if (customer == null)
+            {
+                return null;
+            }
+
+            return customer.Addresses.ToList();
         }
 
-        public Address GetById(int addressId)
+        public Address GetById(int customerId, int addressId)
         {
-            throw new NotImplementedException();
+            IEnumerable<Address> addresses = GetAllByCustomerId(customerId);
+
+            if (addresses == null)
+            {
+                return null;
+            }
+
+            return addresses.Where(address => address.Id == addressId)
+                .FirstOrDefault();
         }
 
         public Address Update(Address address)

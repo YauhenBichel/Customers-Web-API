@@ -31,12 +31,12 @@ namespace CustomerManagement.Services
 
         public IEnumerable<Address> GetAllByCustomerId(int customerId)
         {
-            throw new NotImplementedException();
+            return addressRepository.GetAllByCustomerId(customerId);
         }
 
         public Address GetById(int customerId, int addressId)
         {
-            throw new NotImplementedException();
+            return addressRepository.GetById(customerId, addressId);
         }
 
         public Address GetMainAddress(int customerId)

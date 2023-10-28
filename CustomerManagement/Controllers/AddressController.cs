@@ -57,4 +57,18 @@ public class AddressController : ControllerBase
 
         return Ok(addressResponse);
     }
+
+    [HttpGet("main")]
+    public ActionResult<AddressResponseDTO> GetMainAddress(int customerId)
+    {
+        Address dbAddress = addressService.GetMainAddress(customerId);
+        if (dbAddress == null)
+        {
+            return NotFound();
+        }
+
+        AddressResponseDTO addressResponse = mapper.Map<AddressResponseDTO>(dbAddress);
+
+        return Ok(addressResponse);
+    }
 }

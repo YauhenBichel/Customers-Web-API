@@ -7,9 +7,9 @@ namespace CustomerManagement.Repositories
 	{
         Address Create(Address address);
         Address Update(Address address);
-        Address GetById(int addressId);
-		IEnumerable<Address> GetAll();
-		void Delete(int addressId);
+        Address GetById(int customerId, int addressId);
+		IEnumerable<Address> GetAllByCustomerId(int customerId);
+		void Delete(int customerId, int addressId);
 	}
 }
 
