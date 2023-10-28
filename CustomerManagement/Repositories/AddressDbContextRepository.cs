@@ -26,7 +26,23 @@ namespace CustomerManagement.Repositories
 
         public void Delete(int customerId, int addressId)
         {
-            throw new NotImplementedException();
+            Customer customerForRemoving = dbContext.Customers
+                .Include(c => c.Addresses)
+                .Where(customer => customer.Id == customerId)
+                .FirstOrDefault();
+
+            if (customerForRemoving != null)
+            {
+                Address addressForRemoving = customerForRemoving.Addresses
+                .Where(address => address.Id == addressId)
+                .FirstOrDefault();
+
+                if (addressForRemoving != null)
+                {
+                    dbContext.Addresses.Remove(addressForRemoving);
+                    dbContext.SaveChanges();
+                }
+            }
         }
 
         public IEnumerable<Address> GetAllByCustomerId(int customerId)

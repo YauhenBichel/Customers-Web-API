@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "6bf30c96-53ce-4b9f-9c5e-3553e10b372f",
-		"name": "Customers Management",
+		"name": "CustomersManagement",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "3051943"
 	},
@@ -21,6 +21,24 @@
 				"method": "GET",
 				"header": [],
 				"url": "http://{{domain}}:{{port}}/api/Customer/1/Address/main"
+			},
+			"response": []
+		},
+		{
+			"name": "get address by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://{{domain}}:{{port}}/api/Customer/1/Address/1"
+			},
+			"response": []
+		},
+		{
+			"name": "get all address by customer id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://{{domain}}:{{port}}/api/Customer/1/Address"
 			},
 			"response": []
 		},
@@ -56,7 +74,7 @@
 						}
 					}
 				},
-				"url": "http://{{domain}}:{{port}}/api/Customer/2/Address/1"
+				"url": "http://{{domain}}:{{port}}/api/Customer/1/Address/1"
 			},
 			"response": []
 		},
@@ -111,7 +129,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"title\": \"{{randomStringMax20}}\",\n  \"forename\": \"{{randomStringMax50}}\",\n  \"surname\": \"{{randomStringMax50}}\",\n  \"emailAddress\": \"{{randomStringMax75}}\",\n  \"mobileNo\": \"{{randomStringMax15}}\",\n  \"inActive\": false,\n  \"addresses\": [\n    {\n      \"addressLine1\": \"{{randomStringMax80}}\",\n      \"addressLine2\": \"{{randomStringMax80}}\",\n      \"town\": \"{{randomStringMax50}}\",\n      \"country\": \"{{randomStringMax50}}\",\n      \"postcode\": \"{{randomStringMax10}}\"\n    }\n  ]\n}",
+					"raw": "{\n  \"title\": \"{{randomStringMax20}}\",\n  \"forename\": \"{{randomStringMax50}}\",\n  \"surname\": \"{{randomStringMax50}}\",\n  \"emailAddress\": \"{{randomStringMax75}}\",\n  \"mobileNo\": \"{{randomStringMax15}}\",\n  \"inActive\": false,\n  \"addresses\": [\n    {\n      \"addressLine1\": \"{{randomStringMax80}}\",\n      \"addressLine2\": \"{{randomStringMax80}}\",\n      \"town\": \"{{randomStringMax50}}\",\n      \"country\": \"{{randomStringMax50}}\",\n      \"postcode\": \"{{randomStringMax10}}\"\n    },\n    {\n      \"addressLine1\": \"{{randomStringMax80}}\",\n      \"addressLine2\": \"{{randomStringMax80}}\",\n      \"town\": \"{{randomStringMax50}}\",\n      \"country\": \"{{randomStringMax50}}\",\n      \"postcode\": \"{{randomStringMax10}}\"\n    }\n  ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"

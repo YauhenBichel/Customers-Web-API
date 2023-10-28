@@ -71,4 +71,11 @@ public class AddressController : ControllerBase
 
         return Ok(addressResponse);
     }
+
+    [HttpDelete("{addressId}")]
+    public ActionResult Delete(int customerId, int addressId)
+    {
+        addressService.Delete(customerId, addressId);
+        return Ok();
+    }
 }

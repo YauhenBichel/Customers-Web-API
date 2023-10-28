@@ -10,7 +10,7 @@ namespace CustomerManagement.Services
         Address GetById(int customerId, int addressId);
         Address GetMainAddress(int customerId);
         IEnumerable<Address> GetAllByCustomerId(int customerId);
-        void Delete(int addressId);
+        void Delete(int customerId, int addressId);
     }
 }
 

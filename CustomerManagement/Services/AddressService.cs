@@ -24,9 +24,9 @@ namespace CustomerManagement.Services
             throw new NotImplementedException();
         }
 
-        public void Delete(int addressId)
+        public void Delete(int customerId, int addressId)
         {
-            throw new NotImplementedException();
+            addressRepository.Delete(customerId, addressId);
         }
 
         public IEnumerable<Address> GetAllByCustomerId(int customerId)
