@@ -72,6 +72,17 @@ public class AddressController : ControllerBase
         return Ok(addressResponse);
     }
 
+    [HttpPost]
+    public ActionResult<CustomerResponseDTO> Create(int customerId, AddressRequestDTO addressRequest)
+    {
+        Address address = mapper.Map<Address>(addressRequest);
+        Address dbAddress = addressService.Create(customerId, address);
+
+        AddressResponseDTO addressResponse = mapper.Map<AddressResponseDTO>(dbAddress);
+
+        return CreatedAtAction(nameof(GetById), new { id = addressResponse.Id }, addressResponse);
+    }
+
     [HttpPatch("{addressId}")]
     public ActionResult<CustomerResponseDTO> Patch(int customerId, int addressId,
         [FromBody] JsonPatchDocument<Address> patch)

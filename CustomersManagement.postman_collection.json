@@ -46,7 +46,7 @@
 					"response": []
 				},
 				{
-					"name": "create customer with 2 addresses without main",
+					"name": "try to create customer with 2 addresses without main",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -64,7 +64,7 @@
 					"response": []
 				},
 				{
-					"name": "create customer with 2 main addresses",
+					"name": "try to create customer with 2 main addresses",
 					"request": {
 						"method": "POST",
 						"header": [],

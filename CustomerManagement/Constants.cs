@@ -21,6 +21,8 @@ namespace CustomerManagement.Validators
         public const int ADDRESS_POSTCODE_MAX_LENGTH = 10;
 
         public const int ADDRESS_MINIMUM_AMOUNT = 1;
+
+        public const string DATABASE_NAME = "CustomerManagement";
     }
 }
 
