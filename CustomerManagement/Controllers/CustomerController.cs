@@ -1,27 +1,27 @@
 ﻿using System.Collections;
 using System.Net.Mime;
 using AutoMapper;
-using CusomerManagement.DTOs;
-using CusomerManagement.Mappers;
-using CusomerManagement.Models;
-using CusomerManagement.Services;
-using CusomerManagement.Validators;
+using CustomerManagement.DTOs;
+using CustomerManagement.Mappers;
+using CustomerManagement.Models;
+using CustomerManagement.Services;
+using CustomerManagement.Validators;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CusomerManagement.Controllers;
+namespace CustomerManagement.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
 [Produces(MediaTypeNames.Application.Json)]
-public class CustomerManagementController : ControllerBase
+public class CustomerController : ControllerBase
 {
-    private readonly ILogger<CustomerManagementController> logger;
+    private readonly ILogger<CustomerController> logger;
     private readonly ICustomerService customerService;
     private readonly ICustomerRequestValidator customerRequestValidator;
     private readonly IMapper mapper;
 
-    public CustomerManagementController(ILogger<CustomerManagementController> logger,
+    public CustomerController(ILogger<CustomerController> logger,
         ICustomerService customerService,
         ICustomerRequestValidator customerRequestValidator,
         IMapper mapper)
@@ -35,7 +35,7 @@ public class CustomerManagementController : ControllerBase
     [HttpGet]
     public ActionResult<IEnumerable<CustomerResponseDTO>> GetAll(bool activeOnly)
     {
-        IEnumerable<Customer> customers = customerService.getAll(activeOnly);
+        IEnumerable<Customer> customers = customerService.GetAll(activeOnly);
 
         IEnumerable<CustomerResponseDTO> customerResponses =
             customers.Select(customer => mapper.Map<CustomerResponseDTO>(customer));
@@ -46,7 +46,7 @@ public class CustomerManagementController : ControllerBase
     [HttpGet("{id}")]
     public ActionResult<CustomerResponseDTO> GetById(int id)
     {
-        Customer dbCustomer = customerService.getById(id);
+        Customer dbCustomer = customerService.GetById(id);
         if(dbCustomer == null)
         {
             return NotFound();
@@ -66,7 +66,7 @@ public class CustomerManagementController : ControllerBase
         }
 
         Customer customer = mapper.Map<Customer>(customerRequest);
-        Customer dbCustomer = customerService.create(customer);
+        Customer dbCustomer = customerService.Create(customer);
 
         CustomerResponseDTO customerResponse = mapper.Map<CustomerResponseDTO>(customer);
 
@@ -79,7 +79,7 @@ public class CustomerManagementController : ControllerBase
     {
         if (patch != null)
         {
-            Customer customer = this.customerService.getById(customerId);
+            Customer customer = this.customerService.GetById(customerId);
 
             patch.ApplyTo(customer, ModelState);
 
@@ -88,35 +88,7 @@ public class CustomerManagementController : ControllerBase
                 return BadRequest(ModelState);
             }
 
-            this.customerService.update(customer);
-
-
-            CustomerResponseDTO customerResponse = mapper.Map<CustomerResponseDTO>(customer);
-
-            return Ok(customerResponse);
-        }
-        else
-        {
-            return BadRequest(ModelState);
-        }
-    }
-
-    [HttpPatch("{customerId}")]
-    public ActionResult<CustomerResponseDTO> JsonPatchWithModelState(int customerId,
-        [FromBody] JsonPatchDocument<Customer> patch)
-    {
-        if (patch != null)
-        {
-            Customer customer = this.customerService.getById(customerId);
-
-            patch.ApplyTo(customer, ModelState);
-
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            this.customerService.update(customer);
+            this.customerService.Update(customer);
 
 
             CustomerResponseDTO customerResponse = mapper.Map<CustomerResponseDTO>(customer);
@@ -132,7 +104,7 @@ public class CustomerManagementController : ControllerBase
     [HttpDelete("{customerId}")]
     public ActionResult Delete(int customerId)
     {
-        customerService.delete(customerId);
+        customerService.Delete(customerId);
         return Ok();
     }
 }

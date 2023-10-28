@@ -1,9 +1,9 @@
 ﻿using System;
 using AutoMapper;
-using CusomerManagement.DTOs;
-using CusomerManagement.Models;
+using CustomerManagement.DTOs;
+using CustomerManagement.Models;
 
-namespace CusomerManagement.Mappers
+namespace CustomerManagement.Mappers
 {
 	public class CustomerMapper : Profile
 	{

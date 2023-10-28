@@ -1,8 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using CusomerManagement.Validators;
+using CustomerManagement.Validators;
 
-namespace CusomerManagement.DTOs
+namespace CustomerManagement.DTOs
 {
 	public class AddressResponseDTO : AddressRequestDTO
 	{

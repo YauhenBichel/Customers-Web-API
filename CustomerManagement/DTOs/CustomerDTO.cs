@@ -1,9 +1,9 @@
 ﻿using System;
-using CusomerManagement.Models;
+using CustomerManagement.Models;
 using System.ComponentModel.DataAnnotations;
-using CusomerManagement.Validators;
+using CustomerManagement.Validators;
 
-namespace CusomerManagement.DTOs
+namespace CustomerManagement.DTOs
 {
 	public abstract class CustomerDTO
 	{

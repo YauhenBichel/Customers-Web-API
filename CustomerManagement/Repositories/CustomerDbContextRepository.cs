@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Reflection.Metadata;
-using CusomerManagement.Controllers;
-using CusomerManagement.Models;
-using CusomerManagement.Services;
+using CustomerManagement.Controllers;
+using CustomerManagement.Models;
+using CustomerManagement.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace CusomerManagement.Repositories
+namespace CustomerManagement.Repositories
 {
 	public class CustomerDbContextRepository : ICustomerRepository
 	{

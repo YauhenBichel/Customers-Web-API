@@ -1,7 +1,7 @@
 ﻿using System;
-using CusomerManagement.Models;
+using CustomerManagement.Models;
 
-namespace CusomerManagement.Repositories
+namespace CustomerManagement.Repositories
 {
 	public interface ICustomerRepository
 	{

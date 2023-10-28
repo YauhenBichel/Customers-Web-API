@@ -11,7 +11,16 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://localhost:5091/api/CustomerManagement/1"
+				"url": "http://{{domain}}:{{port}}/api/Customer/1"
+			},
+			"response": []
+		},
+		{
+			"name": "get main address",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://{{domain}}:{{port}}/api/Customer/1/Address/main"
 			},
 			"response": []
 		},
@@ -29,7 +38,25 @@
 						}
 					}
 				},
-				"url": "http://localhost:5033/api/CustomerManagement/1"
+				"url": "http://{{domain}}:{{port}}/api/Customer/2"
+			},
+			"response": []
+		},
+		{
+			"name": "remove address",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://{{domain}}:{{port}}/api/Customer/2/Address/1"
 			},
 			"response": []
 		},
@@ -38,7 +65,7 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"url": "http://localhost:5033/api/CustomerManagement/1"
+				"url": "http://{{domain}}:{{port}}/api/Customer/1"
 			},
 			"response": []
 		},
@@ -47,7 +74,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://localhost:5033/api/CustomerManagement"
+				"url": "http://{{domain}}:{{port}}/api/Customer"
 			},
 			"response": []
 		},
@@ -57,15 +84,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5033/api/CustomerManagement?activeOnly=true",
+					"raw": "http://{{domain}}:{{port}}/api/Customer?activeOnly=true",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{domain}}"
 					],
-					"port": "5033",
+					"port": "{{port}}",
 					"path": [
 						"api",
-						"CustomerManagement"
+						"Customer"
 					],
 					"query": [
 						{
@@ -84,14 +111,32 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"title\": \"{{randomStringMax20}}\",\n  \"forename\": \"{{randomStringMax50}}\",\n  \"surname\": \"{{randomStringMax50}}\",\n  \"emailAdress\": \"{{randomStringMax75}}\",\n  \"mobileNo\": \"{{randomStringMax15}}\",\n  \"inActive\": false,\n  \"addresses\": [\n    {\n      \"addressLine1\": \"{{randomStringMax80}}\",\n      \"addressLine2\": \"{{randomStringMax80}}\",\n      \"town\": \"{{randomStringMax50}}\",\n      \"country\": \"{{randomStringMax50}}\",\n      \"postcode\": \"{{randomStringMax10}}\"\n    }\n  ]\n}",
+					"raw": "{\n  \"title\": \"{{randomStringMax20}}\",\n  \"forename\": \"{{randomStringMax50}}\",\n  \"surname\": \"{{randomStringMax50}}\",\n  \"emailAddress\": \"{{randomStringMax75}}\",\n  \"mobileNo\": \"{{randomStringMax15}}\",\n  \"inActive\": false,\n  \"addresses\": [\n    {\n      \"addressLine1\": \"{{randomStringMax80}}\",\n      \"addressLine2\": \"{{randomStringMax80}}\",\n      \"town\": \"{{randomStringMax50}}\",\n      \"country\": \"{{randomStringMax50}}\",\n      \"postcode\": \"{{randomStringMax10}}\"\n    }\n  ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "http://localhost:5033/api/CustomerManagement"
+				"url": "http://{{domain}}:{{port}}/api/Customer"
+			},
+			"response": []
+		},
+		{
+			"name": "try to create customer unique email",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"{{randomStringMax20}}\",\n  \"forename\": \"{{randomStringMax50}}\",\n  \"surname\": \"{{randomStringMax50}}\",\n  \"emailAddress\": \"duplicate@gmail.com\",\n  \"mobileNo\": \"{{randomStringMax15}}\",\n  \"inActive\": false,\n  \"addresses\": [\n    {\n      \"addressLine1\": \"{{randomStringMax80}}\",\n      \"addressLine2\": \"{{randomStringMax80}}\",\n      \"town\": \"{{randomStringMax50}}\",\n      \"country\": \"{{randomStringMax50}}\",\n      \"postcode\": \"{{randomStringMax10}}\"\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://{{domain}}:{{port}}/api/Customer"
 			},
 			"response": []
 		},
@@ -102,14 +147,14 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"title\": \"{{randomStringMax20}}\",\n  \"forename\": \"{{randomStringMax50}}\",\n  \"surname\": \"{{randomStringMax50}}\",\n  \"emailAdress\": \"{{randomStringMax75}}\",\n  \"mobileNo\": \"{{randomStringMax15}}\",\n  \"inActive\": false,\n  \"addresses\": [\n  ]\n}",
+					"raw": "{\n  \"title\": \"{{randomStringMax20}}\",\n  \"forename\": \"{{randomStringMax50}}\",\n  \"surname\": \"{{randomStringMax50}}\",\n  \"emailAddress\": \"{{randomStringMax75}}\",\n  \"mobileNo\": \"{{randomStringMax15}}\",\n  \"inActive\": false,\n  \"addresses\": [\n  ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "http://localhost:5033/api/CustomerManagement"
+				"url": "http://{{domain}}:{{port}}/api/Customer"
 			},
 			"response": []
 		}
@@ -156,6 +201,18 @@
 					""
 				]
 			}
+		}
+	],
+	"variable": [
+		{
+			"key": "domain",
+			"value": "127.0.0.1",
+			"type": "string"
+		},
+		{
+			"key": "port",
+			"value": "5033",
+			"type": "string"
 		}
 	]
 }

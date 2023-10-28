@@ -1,5 +1,5 @@
 ﻿using System;
-namespace CusomerManagement.Models
+namespace CustomerManagement.Models
 {
 	public class AuditEntity
 	{

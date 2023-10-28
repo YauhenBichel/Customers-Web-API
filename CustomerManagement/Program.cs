@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using CusomerManagement.Models;
-using CusomerManagement;
-using CusomerManagement.Repositories;
-using CusomerManagement.Services;
-using CusomerManagement.Validators;
-using CusomerManagement.Mappers;
+using CustomerManagement.Models;
+using CustomerManagement;
+using CustomerManagement.Repositories;
+using CustomerManagement.Services;
+using CustomerManagement.Validators;
+using CustomerManagement.Mappers;
 
 internal class Program
 {

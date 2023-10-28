@@ -2,7 +2,7 @@
 
 using Microsoft.EntityFrameworkCore;
 
-namespace CusomerManagement.Models
+namespace CustomerManagement.Models
 {
     public class CustomerMngmContext : DbContext
 	{

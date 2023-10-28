@@ -1,10 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Net.Mail;
-using CusomerManagement.Validators;
+using CustomerManagement.Validators;
 using Microsoft.EntityFrameworkCore;
 
-namespace CusomerManagement.Models
+namespace CustomerManagement.Models
 {
     [Index(nameof(EmailAddress), IsUnique = true)]
     [Index(nameof(MobileNo), IsUnique = true)]

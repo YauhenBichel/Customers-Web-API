@@ -1,7 +1,7 @@
 ﻿using System;
-using CusomerManagement.DTOs;
+using CustomerManagement.DTOs;
 
-namespace CusomerManagement.Validators
+namespace CustomerManagement.Validators
 {
     public class CustomerRequestValidator : ICustomerRequestValidator
     {

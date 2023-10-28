@@ -1,10 +1,10 @@
 ﻿using System;
-using CusomerManagement.Controllers;
-using CusomerManagement.Models;
-using CusomerManagement.Repositories;
-using CusomerManagement.Validators;
+using CustomerManagement.Controllers;
+using CustomerManagement.Models;
+using CustomerManagement.Repositories;
+using CustomerManagement.Validators;
 
-namespace CusomerManagement.Services
+namespace CustomerManagement.Services
 {
 	public class CustomerService: ICustomerService
 	{
@@ -19,27 +19,27 @@ namespace CusomerManagement.Services
 			this.customerRepository = customerRepository;
 		}
 
-        public Customer create(Customer customer)
+        public Customer Create(Customer customer)
         {
             return customerRepository.Create(customer);
         }
 
-        public Customer getById(int id)
+        public Customer GetById(int id)
         {
             return customerRepository.GetById(id);
         }
 
-        public IEnumerable<Customer> getAll(bool activeOnly)
+        public IEnumerable<Customer> GetAll(bool activeOnly)
         {
             return customerRepository.GetAll(activeOnly);
         }
 
-        public void delete(int id)
+        public void Delete(int id)
         {
             customerRepository.Delete(id);
         }
 
-        public Customer update(Customer customer)
+        public Customer Update(Customer customer)
         {
             return customerRepository.Update(customer);
         }

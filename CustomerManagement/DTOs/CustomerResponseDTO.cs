@@ -1,8 +1,8 @@
 ﻿using System;
-using CusomerManagement.Models;
+using CustomerManagement.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace CusomerManagement.DTOs
+namespace CustomerManagement.DTOs
 {
 	public class CustomerResponseDTO : CustomerDTO
     {

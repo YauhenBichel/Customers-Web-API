@@ -1,11 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using CusomerManagement.Validators;
+using CustomerManagement.Validators;
 
-namespace CusomerManagement.DTOs
+namespace CustomerManagement.Models
 {
-	public class AddressRequestDTO
+	public class Address : AuditEntity
 	{
+		public int Id { get; set; }
         [Required]
         [StringLength(Constants.ADDRESS_ADDRESS_LINE_1_MAX_LENGTH, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 0)]
         public string AddressLine1 { get; set; }
@@ -19,6 +20,7 @@ namespace CusomerManagement.DTOs
         [Required]
         [StringLength(Constants.ADDRESS_POSTCODE_MAX_LENGTH, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 0)]
         public string Postcode { get; set; }
+
     }
 }
 
