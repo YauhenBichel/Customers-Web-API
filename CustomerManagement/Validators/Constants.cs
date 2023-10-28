@@ -1,7 +1,7 @@
 ﻿using System;
 namespace CustomerManagement.Validators
 {
-	public class Constants
+	public sealed class Constants
 	{
         private Constants()
         {

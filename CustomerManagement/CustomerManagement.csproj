@@ -28,6 +28,8 @@
     <None Remove="Validators\" />
     <None Remove="DTOs\" />
     <None Remove="Mappers\" />
+    <None Remove="Middleware\" />
+    <None Remove="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -36,6 +38,8 @@
     <Folder Include="Validators\" />
     <Folder Include="DTOs\" />
     <Folder Include="Mappers\" />
+    <Folder Include="Middleware\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig" />

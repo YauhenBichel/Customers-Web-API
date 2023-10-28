@@ -5,6 +5,9 @@ using CustomerManagement.Repositories;
 using CustomerManagement.Services;
 using CustomerManagement.Validators;
 using CustomerManagement.Mappers;
+using System.Collections.Generic;
+using System.Reflection.Metadata;
+using CustomerManagement.Middleware;
 
 internal class Program
 {
@@ -28,6 +31,7 @@ internal class Program
 
         var app = builder.Build();
 
+        app.UseMiddleware<UserExceptionHandlerMiddleware>();
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {

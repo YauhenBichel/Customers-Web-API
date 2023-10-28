@@ -1,6 +1,7 @@
 ﻿using System;
 using CustomerManagement.Controllers;
 using CustomerManagement.DTOs;
+using CustomerManagement.Exceptions;
 
 namespace CustomerManagement.Validators
 {
@@ -26,15 +27,15 @@ namespace CustomerManagement.Validators
             }
 
             int mainAddressesAmount = addressRequests.Where(address => address.IsMain).Count();
-            if(mainAddressesAmount == 0)
+            if(addressRequests.Count() > 1 && mainAddressesAmount == 0)
             {
                 logger.LogError("No main address");
-                return false;
+                throw new NoMainAddressException();
             }
-            if (mainAddressesAmount > 1)
+            if (addressRequests.Count() > 1 && mainAddressesAmount > 1)
             {
                 logger.LogError("More than 1 main address");
-                return false;
+                throw new MoreThanOneMainAddressException();
             }
 
             return true;

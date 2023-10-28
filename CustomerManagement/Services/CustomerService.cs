@@ -21,6 +21,11 @@ namespace CustomerManagement.Services
 
         public Customer Create(Customer customer)
         {
+            if(customer.Addresses.Count() == 1 && !customer.Addresses[0].IsMain)
+            {
+                customer.Addresses[0].IsMain = true;
+            }
+
             return customerRepository.Create(customer);
         }
 

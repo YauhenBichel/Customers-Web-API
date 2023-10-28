@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CustomerManagement.Controllers;
 
 [ApiController]
-[Route("api/Customer/{customerId}/Address")]
+[Route("api/customer/{customerId}/address")]
 [Produces(MediaTypeNames.Application.Json)]
 public class AddressController : ControllerBase
 {
