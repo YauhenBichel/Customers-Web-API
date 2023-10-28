@@ -19,6 +19,8 @@ namespace CustomerManagement.Validators
         public const int ADDRESS_TOWN_MAX_LENGTH = 50;
         public const int ADDRESS_COUNTRY_MAX_LENGTH = 50;
         public const int ADDRESS_POSTCODE_MAX_LENGTH = 10;
+
+        public const int ADDRESS_MINIMUM_AMOUNT = 1;
     }
 }
 
