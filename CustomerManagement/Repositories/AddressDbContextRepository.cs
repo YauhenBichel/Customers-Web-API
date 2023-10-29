@@ -21,13 +21,27 @@ namespace CustomerManagement.Repositories
 
         public Address Create(int customerId, Address address)
         {
-            throw new NotImplementedException();
+            Customer customer = dbContext.Customers
+                .Include(c => c.Addresses)
+                .Where(customer => customer.Id == customerId)
+                .FirstOrDefault();
+
+            if (customer == null)
+            {
+                return null;
+            }
+
+            customer.Addresses.Add(address);
+
+            dbContext.SaveChanges();
+            return address;
         }
 
-
-        public Address Update(int customerId, Address address)
+        public Address Update(Address address)
         {
-            throw new NotImplementedException();
+            dbContext.Addresses.Update(address);
+            dbContext.SaveChanges();
+            return address;
         }
 
         public IEnumerable<Address> GetAllByCustomerId(int customerId)

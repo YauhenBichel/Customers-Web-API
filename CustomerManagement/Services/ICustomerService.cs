@@ -9,6 +9,7 @@ namespace CustomerManagement.Services
         Customer Update(Customer customer);
         Customer GetById(int id);
         IEnumerable<Customer> GetAll(bool activeOnly);
+        bool Exists(int id);
         void Delete(int id);
     }
 }

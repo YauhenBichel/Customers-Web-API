@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 
 namespace CustomerManagement.Models
 {
@@ -32,6 +33,14 @@ namespace CustomerManagement.Models
             }
 
             return base.SaveChanges();
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //add constraints
+            //in-memory database does not support constraints
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

@@ -7,7 +7,7 @@ using CustomerManagement.Validators;
 
 namespace CustomerManagement.Services
 {
-	public class CustomerService: ICustomerService
+    public class CustomerService : ICustomerService
 	{
         private readonly ILogger<CustomerService> logger;
         private readonly ICustomerRepository customerRepository;
@@ -40,7 +40,14 @@ namespace CustomerManagement.Services
 
         public Customer GetById(int id)
         {
-            return customerRepository.GetById(id);
+            Customer customer = customerRepository.GetById(id);
+            if(customer == null)
+            {
+                logger.LogError("Customer with ID = '{}' not found", id);
+                throw new CustomerNotFoundException();
+            }
+
+            return customer;
         }
 
         public IEnumerable<Customer> GetAll(bool activeOnly)
@@ -62,6 +69,18 @@ namespace CustomerManagement.Services
             }
 
             return customerRepository.Update(customer);
+        }
+
+        public bool Exists(int id)
+        {
+            Customer customer = customerRepository.GetById(id);
+            if (customer == null)
+            {
+                logger.LogError("Customer with ID = '{}' not found", id);
+                return false;
+            }
+
+            return true;
         }
     }
 }

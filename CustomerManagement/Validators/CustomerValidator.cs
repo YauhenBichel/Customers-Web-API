@@ -8,7 +8,7 @@ namespace CustomerManagement.Validators
     {
         public bool Exists(Customer customer)
         {
-            throw new NotImplementedException();
+            return false;
         }
     }
 }

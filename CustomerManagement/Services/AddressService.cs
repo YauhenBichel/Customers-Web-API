@@ -48,8 +48,7 @@ namespace CustomerManagement.Services
             {
                 logger.LogError("The customer has only one address. The min number of addresses is {}. CustomerId is {}, addressId is {}",
                      Constants.ADDRESS_MINIMUM_AMOUNT, customerId, addressId);
-                //throw new Exception();
-                return;
+                throw new MainAddressRemovingException();
             }
 
             Address dbAddress = GetById(customerId, addressId);
@@ -57,8 +56,7 @@ namespace CustomerManagement.Services
             {
                 logger.LogError("Main address could not be removed. CustomerId is {}, addressId is {}",
                      customerId, addressId);
-                //throw new Exception();
-                return;
+                throw new MainAddressRemovingException();
             }
 
             addressRepository.Delete(customerId, addressId);
@@ -89,7 +87,13 @@ namespace CustomerManagement.Services
 
         public Address Update(int customerId, Address address)
         {
-            throw new NotImplementedException();
+            if(!customerService.Exists(customerId))
+            {
+                logger.LogError("customer not found");
+                return null;
+            }
+
+            return addressRepository.Update(address);
         }
     }
 }

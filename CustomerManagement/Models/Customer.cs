@@ -6,8 +6,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CustomerManagement.Models
 {
-    [Index(nameof(EmailAddress), IsUnique = true)]
-    [Index(nameof(MobileNo), IsUnique = true)]
     public class Customer : AuditEntity
     {
         public int Id { get; set; }

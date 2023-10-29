@@ -53,6 +53,7 @@ A Web API to support the management of Customers.
 - DELETE a customer and all associated addresses
 - PATCH a customer as in-active
     request body
+    ```
     [     
         {       
            "op": "replace",       
@@ -60,10 +61,15 @@ A Web API to support the management of Customers.
            "value": true
         }
     ]
+    ```
 
-### Database is in-memory
+## Database
+- I use in-memory database
+    - Constraints are not supported by database in-memory
+    https://learn.microsoft.com/en-us/ef/core/testing/#inmemory-is-not-a-relational-database 
 
-### Postman collection
+
+## Postman collection
 - pre-request script generates random string values
 
 ## References
