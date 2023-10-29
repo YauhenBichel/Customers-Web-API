@@ -80,7 +80,7 @@ public class AddressController : ControllerBase
 
         AddressResponseDTO addressResponse = mapper.Map<AddressResponseDTO>(dbAddress);
 
-        return CreatedAtAction(nameof(GetById), new { id = addressResponse.Id }, addressResponse);
+        return CreatedAtAction(nameof(GetById), new { customerId = customerId, addressId = addressResponse.Id }, addressResponse);
     }
 
     [HttpPatch("{addressId}")]

@@ -47,6 +47,7 @@ namespace CustomerManagement.Repositories
             else
             {
                 return dbContext.Customers
+                    .Include(c => c.Addresses)
                     .OrderBy(customer => customer.Id)
                     .ToList();
             }

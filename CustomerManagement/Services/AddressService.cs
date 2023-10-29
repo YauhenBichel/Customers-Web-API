@@ -35,9 +35,7 @@ namespace CustomerManagement.Services
 
             IEnumerable<Address> addresses = dbCustomer.Addresses;
 
-
             Address dbAddress = addressRepository.Create(customerId, address);
-
             return dbAddress;
         }
 
