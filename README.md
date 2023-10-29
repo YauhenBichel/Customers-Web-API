@@ -20,7 +20,7 @@ A Web API to support the management of Customers.
     >docker run ybichel/customerapi
 
 
-### Entities
+## Entities
 - Customer
     - title NOT NULL max varchar 20
     - forename NOT NULL max varchar 50
@@ -34,19 +34,21 @@ A Web API to support the management of Customers.
     - country NULL max varchar 50 //If not provided default to UK
     - postcode NOT NULL max varchar 10
 
-### Constraints
+## Constraints
 • Cannot delete the last address as a customer MUST have at least one address.
 • A secondary address can become the main address, but a customer can have ONLY ONE main address.
 • A customer can only exist once within the database
 • A customer can have multiple addresses.
 
-### API Functionality
+## API Functionality
 • A customer can be marked as in-active if requested by the customer.
 • A customer can be deleted, and all associated addresses should also be deleted
 • A list of ALL customers can be returned.
 • A list of INACTIVE customers can be returned.
 
-### API
+## API
+### Please use a postman collection
+
 - Create a customer
 - GET all customers
 - GET all active customers
@@ -60,6 +62,17 @@ A Web API to support the management of Customers.
            "path": "/InActive",       
            "value": true
         }
+    ]
+    ```
+- PATCH an address as main
+    request body
+    ```
+    [     
+        {       
+           "op": "replace",       
+           "path": "/IsMain",       
+           "value": true
+        } 
     ]
     ```
 
