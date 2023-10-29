@@ -1,5 +1,6 @@
 ﻿using System;
 using CustomerManagement.Controllers;
+using CustomerManagement.Exceptions;
 using CustomerManagement.Models;
 using CustomerManagement.Repositories;
 using CustomerManagement.Validators;
@@ -10,18 +11,34 @@ namespace CustomerManagement.Services
 	{
         private readonly ILogger<AddressService> logger;
         private readonly IAddressRepository addressRepository;
+        private readonly ICustomerService customerService;
 
 
         public AddressService(ILogger<AddressService> logger,
-            IAddressRepository addressRepository)
+            IAddressRepository addressRepository,
+            ICustomerService customerService)
 		{
 			this.logger = logger;
 			this.addressRepository = addressRepository;
-		}
+            this.customerService = customerService;
+
+        }
 
         public Address Create(int customerId, Address address)
         {
-            throw new NotImplementedException();
+            Customer dbCustomer = customerService.GetById(customerId);
+            if(dbCustomer == null)
+            {
+                logger.LogError("Customer with Id='{}' not found", customerId);
+                throw new CustomerNotFoundException();
+            }
+
+            IEnumerable<Address> addresses = dbCustomer.Addresses;
+
+
+            Address dbAddress = addressRepository.Create(customerId, address);
+
+            return dbAddress;
         }
 
         public void Delete(int customerId, int addressId)

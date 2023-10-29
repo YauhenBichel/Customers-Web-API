@@ -60,7 +60,7 @@ public class CustomerController : ControllerBase
     [HttpPost]
     public ActionResult<CustomerResponseDTO> Create(CustomerRequestDTO customerRequest)
     {
-        if(!addressRequestValidator.doesOnlyOneMainAddressExist(customerRequest.Addresses))
+        if(!addressRequestValidator.DoesOnlyOneMainAddressExist(customerRequest.Addresses))
         {
             return BadRequest("A customer must have at least one address and only one main address");
         }

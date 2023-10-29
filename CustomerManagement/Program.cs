@@ -22,6 +22,8 @@ internal class Program
         builder.Services.AddScoped<ICustomerService, CustomerService>();
         builder.Services.AddScoped<IAddressService, AddressService>();
         builder.Services.AddScoped<IAddressRequestValidator, AddressRequestValidator>();
+        builder.Services.AddScoped<IAddressValidator, AddressValidator>();
+        builder.Services.AddScoped<ICustomerValidator, CustomerValidator>();
         builder.Services.AddDbContext<CustomerMngmContext>(opt => opt.UseInMemoryDatabase(Constants.DATABASE_NAME));
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         builder.Services.AddResponseCaching();

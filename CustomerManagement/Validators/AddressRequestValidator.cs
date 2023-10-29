@@ -14,14 +14,14 @@ namespace CustomerManagement.Validators
             this.logger = logger;
         }
 
-        public bool doesAddressExist(IEnumerable<AddressRequestDTO> addressRequests)
+        public bool DoesAnyAddressExist(IEnumerable<AddressRequestDTO> addressRequests)
         {
             return addressRequests != null && addressRequests.Count() > 0;
         }
 
-        public bool doesOnlyOneMainAddressExist(IEnumerable<AddressRequestDTO> addressRequests)
+        public bool DoesOnlyOneMainAddressExist(IEnumerable<AddressRequestDTO> addressRequests)
         {
-            if(!doesAddressExist(addressRequests))
+            if(!DoesAnyAddressExist(addressRequests))
             {
                 return false;
             }
