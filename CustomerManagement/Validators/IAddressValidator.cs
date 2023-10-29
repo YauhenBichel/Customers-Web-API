@@ -6,7 +6,8 @@ namespace CustomerManagement.Validators
 {
 	public interface IAddressValidator
     {
-		bool IsDuplicate(IEnumerable<Address> addresses);
+		bool IsDuplicate(Address address, IEnumerable<Address> addresses);
+        bool DoesOnlyOneMainAddressExist(IEnumerable<Address> addresses);
     }
 }
 

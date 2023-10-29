@@ -7,6 +7,7 @@ namespace CustomerManagement.Services
 	{
         Address Create(int customerId, Address address);
         Address Update(int customerId, Address address);
+        Address UpdateMainAddress(int customerId, Address address);
         Address GetById(int customerId, int addressId);
         Address GetMainAddress(int customerId);
         IEnumerable<Address> GetAllByCustomerId(int customerId);

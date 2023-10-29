@@ -15,9 +15,27 @@ namespace CustomerManagement.Validators
             this.logger = logger;
         }
 
-        public bool IsDuplicate(IEnumerable<Address> addresses)
+        public bool IsDuplicate(Address newAddress, IEnumerable<Address> addresses)
         {
-            return addresses != null && addresses.Count() > 0;
+            return addresses.Select(address => address.Equals(newAddress)).Any();
+        }
+
+        public bool DoesOnlyOneMainAddressExist(IEnumerable<Address> addresses)
+        {
+            int mainAddressesAmount = addresses.Where(address => address.IsMain).Count();
+            if (addresses.Count() > 1 && mainAddressesAmount == 0)
+            {
+                logger.LogError("No main address");
+                throw new NoMainAddressException();
+            }
+            if (addresses.Count() > 1 && mainAddressesAmount > 1)
+            {
+                logger.LogError("More than 1 main address");
+                throw new MoreThanOneMainAddressException();
+            }
+
+            return true;
+
         }
     }
 }

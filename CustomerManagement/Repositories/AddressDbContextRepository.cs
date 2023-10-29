@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Reflection.Metadata;
 using CustomerManagement.Controllers;
 using CustomerManagement.Models;
@@ -91,6 +92,14 @@ namespace CustomerManagement.Repositories
                     dbContext.SaveChanges();
                 }
             }
+        }
+
+        public Address UpdateMainAddress(Address oldMainAddress, Address newMainAddress)
+        {
+            dbContext.Addresses.Update(oldMainAddress);
+            dbContext.Addresses.Update(newMainAddress);
+            dbContext.SaveChanges();
+            return newMainAddress;
         }
     }
 }
