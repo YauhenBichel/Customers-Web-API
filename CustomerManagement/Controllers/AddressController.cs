@@ -98,7 +98,7 @@ public class AddressController : ControllerBase
                 return BadRequest(ModelState);
             }
 
-            this.addressService.Update(customerId, address);
+            this.addressService.UpdateMainAddress(customerId, address);
 
             AddressResponseDTO addressResponse = mapper.Map<AddressResponseDTO>(address);
 

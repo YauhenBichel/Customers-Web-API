@@ -60,9 +60,13 @@ public class CustomerController : ControllerBase
     [HttpPost]
     public ActionResult<CustomerResponseDTO> Create(CustomerRequestDTO customerRequest)
     {
-        if(!addressRequestValidator.DoesOnlyOneMainAddressExist(customerRequest.Addresses))
+        if (!addressRequestValidator.DoesOnlyOneMainAddressExist(customerRequest.Addresses))
         {
             return BadRequest("A customer must have at least one address and only one main address");
+        }
+        if (addressRequestValidator.DoesDuplicatesExist(customerRequest.Addresses))
+        {
+            return BadRequest("A customer has duplicated addresses");
         }
 
         Customer customer = mapper.Map<Customer>(customerRequest);

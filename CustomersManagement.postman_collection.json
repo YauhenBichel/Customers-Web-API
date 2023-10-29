@@ -64,6 +64,24 @@
 					"response": []
 				},
 				{
+					"name": "try to create customer with 2 duplicated addresses",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"{{randomStringMax20}}\",\n  \"forename\": \"{{randomStringMax50}}\",\n  \"surname\": \"{{randomStringMax50}}\",\n  \"emailAddress\": \"{{randomStringMax75}}\",\n  \"mobileNo\": \"{{randomStringMax15}}\",\n  \"inActive\": false,\n  \"addresses\": [\n    {\n      \"addressLine1\": \"addressLine1\",\n      \"addressLine2\": \"addressLine2\",\n      \"town\": \"town\",\n      \"country\": \"country\",\n      \"postcode\": \"postcode\",\n      \"isMain\": true\n    },\n    {\n      \"addressLine1\": \"addressLine1\",\n      \"addressLine2\": \"addressLine2\",\n      \"town\": \"town\",\n      \"country\": \"country\",\n      \"postcode\": \"postcode\",\n      \"isMain\": false\n    },\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://{{domain}}:{{port}}/api/customer"
+					},
+					"response": []
+				},
+				{
 					"name": "try to create customer with 2 main addresses",
 					"request": {
 						"method": "POST",
@@ -152,7 +170,7 @@
 						}
 					}
 				},
-				"url": "http://{{domain}}:{{port}}/api/customer/1/address/1"
+				"url": "http://{{domain}}:{{port}}/api/customer/1/address/2"
 			},
 			"response": []
 		},
@@ -225,7 +243,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"title\": \"{{randomStringMax20}}\",\n  \"forename\": \"{{randomStringMax50}}\",\n  \"surname\": \"{{randomStringMax50}}\",\n  \"emailAddress\": \"{{randomStringMax75}}\",\n  \"mobileNo\": \"{{randomStringMax15}}\",\n  \"inActive\": false,\n  \"addresses\": [\n    {\n      \"addressLine1\": \"{{randomStringMax80}}\",\n      \"addressLine2\": \"{{randomStringMax80}}\",\n      \"town\": \"{{randomStringMax50}}\",\n      \"country\": \"{{randomStringMax50}}\",\n      \"postcode\": \"{{randomStringMax10}}\",\n      \"isMain\": true\n    },\n    {\n      \"addressLine1\": \"{{randomStringMax80}}\",\n      \"addressLine2\": \"{{randomStringMax80}}\",\n      \"town\": \"{{randomStringMax50}}\",\n      \"country\": \"{{randomStringMax50}}\",\n      \"postcode\": \"{{randomStringMax10}}\",\n      \"isMain\": false\n    }\n  ]\n}",
+					"raw": "{\n  \"title\": \"{{randomStringMax20}}\",\n  \"forename\": \"{{randomStringMax50}}\",\n  \"surname\": \"{{randomStringMax50}}\",\n  \"emailAddress\": \"{{randomStringMax75}}\",\n  \"mobileNo\": \"{{randomStringMax15}}\",\n  \"inActive\": false,\n  \"addresses\": [\n    {\n      \"addressLine1\": \"addressLine1\",\n      \"addressLine2\": \"{{randomStringMax80}}\",\n      \"town\": \"{{randomStringMax50}}\",\n      \"country\": \"{{randomStringMax50}}\",\n      \"postcode\": \"{{randomStringMax10}}\",\n      \"isMain\": true\n    },\n    {\n      \"addressLine1\": \"{{randomStringMax80}}\",\n      \"addressLine2\": \"{{randomStringMax80}}\",\n      \"town\": \"{{randomStringMax50}}\",\n      \"country\": \"{{randomStringMax50}}\",\n      \"postcode\": \"{{randomStringMax10}}\",\n      \"isMain\": false\n    }\n  ]\n}",
 					"options": {
 						"raw": {
 							"language": "json"

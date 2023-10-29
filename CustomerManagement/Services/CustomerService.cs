@@ -64,7 +64,7 @@ namespace CustomerManagement.Services
         {
             if (customerValidator.Exists(customer))
             {
-                logger.LogError("The same  customer exists");
+                logger.LogError("The same customer exists");
                 throw new CustomerDuplicateException();
             }
 

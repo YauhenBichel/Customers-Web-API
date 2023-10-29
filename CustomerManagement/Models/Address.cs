@@ -22,6 +22,34 @@ namespace CustomerManagement.Models
         public string Postcode { get; set; }
         public bool IsMain { get; set; }
 
+        public override bool Equals(object? obj)
+        {
+            return obj is Address address &&
+                   CreatedDate == address.CreatedDate &&
+                   UpdatedDate == address.UpdatedDate &&
+                   Id == address.Id &&
+                   AddressLine1 == address.AddressLine1 &&
+                   AddressLine2 == address.AddressLine2 &&
+                   Town == address.Town &&
+                   Country == address.Country &&
+                   Postcode == address.Postcode &&
+                   IsMain == address.IsMain;
+        }
+
+        public override int GetHashCode()
+        {
+            HashCode hash = new HashCode();
+            hash.Add(CreatedDate);
+            hash.Add(UpdatedDate);
+            hash.Add(Id);
+            hash.Add(AddressLine1);
+            hash.Add(AddressLine2);
+            hash.Add(Town);
+            hash.Add(Country);
+            hash.Add(Postcode);
+            hash.Add(IsMain);
+            return hash.ToHashCode();
+        }
     }
 }
 

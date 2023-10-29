@@ -107,7 +107,30 @@ namespace CustomerManagement.Services
                 oldMainAddress.IsMain = false;
                 addressRepository.UpdateMainAddress(oldMainAddress, address);
             }
-            //else if()
+            else
+            {
+                IEnumerable<Address> addresses = GetAllByCustomerId(customerId);
+                if(addresses.Count() == Constants.ADDRESS_MINIMUM_AMOUNT)
+                {
+                    logger.LogError("Attempt to mark address as not main for customer with ID = '{}'", customerId);
+                    throw new NoMainAddressException();
+                }
+                else
+                {
+                    Address newMainAddress = addresses.OrderBy(dbAddress => dbAddress.CreatedDate)
+                        .Where(dbAddress => dbAddress.Id != address.Id)
+                        .FirstOrDefault();
+
+                    if(newMainAddress == null)
+                    {
+                        logger.LogError("Not found 2d address for customer with ID = '{}'", customerId);
+                        throw new NoMainAddressException();
+                    }
+
+                    newMainAddress.IsMain = true;
+                    addressRepository.UpdateMainAddress(newMainAddress, address);
+                }
+            }
 
             return address;
         }

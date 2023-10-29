@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using CustomerManagement.Controllers;
 using CustomerManagement.DTOs;
 using CustomerManagement.Exceptions;
@@ -17,6 +18,26 @@ namespace CustomerManagement.Validators
         public bool DoesAnyAddressExist(IEnumerable<AddressRequestDTO> addressRequests)
         {
             return addressRequests != null && addressRequests.Count() > 0;
+        }
+
+        public bool DoesDuplicatesExist(IEnumerable<AddressRequestDTO> addressRequests)
+        {
+            ISet<AddressRequestDTO> addressSet = new HashSet<AddressRequestDTO>();
+
+            foreach (var address in addressRequests)
+            {
+                if(!addressSet.Contains(address))
+                {
+                    addressSet.Add(address);
+                }
+                else
+                {
+                    logger.LogError("Duplicate is {}", address);
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public bool DoesOnlyOneMainAddressExist(IEnumerable<AddressRequestDTO> addressRequests)

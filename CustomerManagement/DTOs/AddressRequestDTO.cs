@@ -20,6 +20,23 @@ namespace CustomerManagement.DTOs
         [StringLength(Constants.ADDRESS_POSTCODE_MAX_LENGTH, ErrorMessage = "{0} length must be between {2} and {1}.", MinimumLength = 0)]
         public string Postcode { get; set; }
         public bool IsMain { get; set; }
+
+        //without isMain
+        public override bool Equals(object? obj)
+        {
+            return obj is AddressRequestDTO dTO &&
+                   AddressLine1 == dTO.AddressLine1 &&
+                   AddressLine2 == dTO.AddressLine2 &&
+                   Town == dTO.Town &&
+                   Country == dTO.Country &&
+                   Postcode == dTO.Postcode;
+        }
+
+        //without isMain
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(AddressLine1, AddressLine2, Town, Country, Postcode);
+        }
     }
 }
 
