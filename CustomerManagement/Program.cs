@@ -8,12 +8,26 @@ using CustomerManagement.Mappers;
 using System.Collections.Generic;
 using System.Reflection.Metadata;
 using CustomerManagement.Middleware;
+using Serilog;
+using Serilog.Formatting.Compact;
+using Microsoft.Extensions.Configuration;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
+        // Get application base directory
+        string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+
         var builder = WebApplication.CreateBuilder(args);
+
+        var logger = new LoggerConfiguration()
+            .ReadFrom
+            .Configuration(builder.Configuration)
+            .Enrich
+            .FromLogContext()
+            .CreateLogger();
+        builder.Services.AddLogging(logBuilder => logBuilder.AddSerilog(logger));
 
         // Add services to the container.
         builder.Services.AddControllers().AddNewtonsoftJson();
