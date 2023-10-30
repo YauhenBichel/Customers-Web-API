@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CustomerManagement.Models
 {
+    //constraints do not work with in-memory database
+    [Index(nameof(EmailAddress), IsUnique = true)]
+    [Index(nameof(MobileNo), IsUnique = true)]
     public class Customer : AuditEntity
     {
         public int Id { get; set; }
