@@ -86,4 +86,14 @@ A Web API to support the management of Customers.
 - pre-request script generates random string values
 
 ## References
-- https://code.visualstudio.com/docs/containers/quickstart-aspnet-core 
+- https://code.visualstudio.com/docs/containers/quickstart-aspnet-core
+
+---
+
+## Contributors
+
+Thank you to everyone who has helped this project. Your code, reviews, issues, and pull requests are appreciated.
+
+- [@YauhenBichel](https://github.com/YauhenBichel)
+
+See the [full contributor graph](https://github.com/YauhenBichel/Customers-Web-API/graphs/contributors).
